@@ -1,0 +1,39 @@
+[
+    {
+      "id": "1",
+      "image": "/assets/img/team/team-1.jpg",
+      "fbLink": "//www.facebook.com",
+      "twitterLink": "//www.twitter.com",
+      "instagramLink": "//www.instagram.com",
+      "name": "Mr. Ziaur Rhaman",
+      "position": "Chief Executive Officer (CEO)"
+    },
+    {
+      "id": "2",
+      "image": "/assets/img/team/team-3.jpg",
+      "fbLink": "//www.facebook.com",
+      "twitterLink": "//www.twitter.com",
+      "instagramLink": "//www.instagram.com",
+      "name": "Mr. Partha Biswas",
+      "position": "Chief Marketing Officer (CMO)"
+    },
+    {
+      "id": "3",
+      "image": "/assets/img/team/team-2.jpg",
+      "fbLink": "//www.facebook.com",
+      "twitterLink": "//www.twitter.com",
+      "instagramLink": "//www.instagram.com",
+      "name": "Mr. Khairul Islam",
+      "position": "Chief Managing Director (CMD)"
+    },
+    {
+      "id": "4",
+      "image": "/assets/img/team/team-4.jpg",
+      "fbLink": "//www.facebook.com",
+      "twitterLink": "//www.twitter.com",
+      "instagramLink": "//www.instagram.com",
+      "name": "Mr. Azmul",
+      "position": "Chief Technology Officer (CTO)"
+    }
+  ]
+  
