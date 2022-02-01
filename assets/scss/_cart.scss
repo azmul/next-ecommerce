@@ -40,6 +40,7 @@ h3.cart-page-title {
     tbody > tr {
       border-bottom: 1px solid #ebebeb;
       td.product-thumbnail {
+        cursor: pointer;
         width: 150px;
       }
       td.product-name {

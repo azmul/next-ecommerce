@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 import React, { Fragment, useState, useEffect } from "react";
 import Paginator from "react-hooks-paginator";
 import { getSortedProducts } from "../helpers/product";
@@ -7,6 +7,7 @@ import ProductsList from "../wrappers/product/Products";
 import { fetchMenuProducts } from "../redux/actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
+import ProductLoader from "../components/loader/ProductLoader";
 
 const Menu: NextPage = () => {
   const [layout, setLayout] = useState("grid three-column");
@@ -23,7 +24,9 @@ const Menu: NextPage = () => {
   const params = new URLSearchParams(window.location.search);
   let item = params.get("item");
 
-  const products = useSelector((state: RootState) => state.productData.menuProducts);
+  const products = useSelector(
+    (state: RootState) => state.productData.menuProducts
+  );
 
   const pageLimit = 100;
 
@@ -59,42 +62,47 @@ const Menu: NextPage = () => {
 
   return (
     <Fragment>
+      <div className="shop-area pt-50 pb-100">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              {/* shop topbar filter */}
+              <ShopTopbarFilter
+                getLayout={getLayout}
+                getFilterSortParams={getFilterSortParams}
+                productCount={products && products.length}
+                sortedProductCount={currentData.length}
+                products={products}
+                getSortParams={getSortParams}
+              />
 
-        <div className="shop-area pt-50 pb-100">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                {/* shop topbar filter */}
-                <ShopTopbarFilter
-                  getLayout={getLayout}
-                  getFilterSortParams={getFilterSortParams}
-                  productCount={products && products.length}
-                  sortedProductCount={currentData.length}
-                  products={products}
-                  getSortParams={getSortParams}
-                />
+              {products && products.length > 0 ? (
+                <>
+                  {/* shop page content default */}
+                  <ProductsList layout={layout} products={currentData} />
 
-                {/* shop page content default */}
-                <ProductsList layout={layout} products={currentData} />
-
-                {/* shop product pagination */}
-                <div className="pro-pagination-style text-center mt-30">
-                  <Paginator
-                    totalRecords={sortedProducts.length}
-                    pageLimit={pageLimit}
-                    pageNeighbours={2}
-                    setOffset={setOffset}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageContainerClass="mb-0 mt-0"
-                    pagePrevText="«"
-                    pageNextText="»"
-                  />
-                </div>
-              </div>
+                  {/* shop product pagination */}
+                  <div className="pro-pagination-style text-center mt-30">
+                    <Paginator
+                      totalRecords={sortedProducts.length}
+                      pageLimit={pageLimit}
+                      pageNeighbours={2}
+                      setOffset={setOffset}
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      pageContainerClass="mb-0 mt-0"
+                      pagePrevText="«"
+                      pageNextText="»"
+                    />
+                  </div>
+                </>
+              ) : (
+                <ProductLoader />
+              )}
             </div>
           </div>
         </div>
+      </div>
     </Fragment>
   );
 };

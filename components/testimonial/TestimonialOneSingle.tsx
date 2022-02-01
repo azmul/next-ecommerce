@@ -9,7 +9,7 @@ const TestimonialOneSingle = ({ data, sliderClass }) => {
         sliderClass ? sliderClass : ""
       }`}
     >
-      <Image src={data.image} alt="TESTIMONIAL" width="150" height="100"/>
+      {data.image && <Image src={data.image} alt="TESTIMONIAL" width="130" height="120"/>}
       <p>{data.content}</p>
       <div className="client-info">
         <i className="fa fa-map-signs" />

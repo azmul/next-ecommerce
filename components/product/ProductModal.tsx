@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import Swiper from "react-id-swiper";
 import { getProductCartQty } from "../../helpers/product";
 import { Modal } from "react-bootstrap";
-import Rating from "./ProductRating";
+import { Rate } from "antd";
 import { connect } from "react-redux";
 import Image from "next/image";
 
@@ -163,7 +163,7 @@ function ProductModal(props) {
                 {product.rating && product.rating > 0 ? (
                   <div className="pro-details-rating-wrap">
                     <div className="pro-details-rating">
-                      <Rating ratingValue={product.rating} />
+                      <Rate value={product.rating} />
                     </div>
                   </div>
                 ) : (

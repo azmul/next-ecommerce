@@ -8,13 +8,14 @@ import {
 } from "react-share";
 import { UserOutlined } from "@ant-design/icons";
 import  Link  from "next/link";
+import Image from "next/image";
 
 const Post = ({ blog }) => {
   return (
     <Fragment>
       <div className="blog-details-top">
         <div className="blog-details-img">
-          <img alt={blog && blog.title} src={blog && blog.picture_url} />
+          <Image width={500} height={450} layout="responsive" alt={blog && blog.title} src={blog && blog.picture_url} />
         </div>
         <div className="blog-details-content">
           <div className="blog-meta-2">

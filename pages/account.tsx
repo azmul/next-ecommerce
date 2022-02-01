@@ -127,7 +127,9 @@ const MyAccount: NextPage = () => {
 
   useEffect(() => {
     if (!deepEqual(user, prevUser)) {
-      dispatch(getUser(user._id));
+      if(user && user._id) {
+        dispatch(getUser(user._id));
+      }
     }
   }, [dispatch, prevUser, user]);
 

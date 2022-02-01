@@ -230,6 +230,7 @@
     border-bottom: none;
   }
   .sidebar-blog-img {
+    cursor: pointer;
     flex: 0 0 70px;
     margin: 0 20px 0 0;
     @media #{$lg-layout} {
@@ -252,6 +253,13 @@
     h4 {
       font-size: 14px;
       margin: 5px 0 0;
+      cursor: pointer;
+      .ant-typography {
+        &:hover {
+          color: $theme-color;
+        }
+      }
+      
     }
   }
 }

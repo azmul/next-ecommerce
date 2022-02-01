@@ -28,6 +28,10 @@ export const fetchProducts = () => {
 export const fetchMenuProducts = (params: any) => {
   return async (dispatch: any) => {
     try {
+      dispatch({
+        type: FETCH_MENU_PRODUCTS,
+        payload: [],
+      });
       const response = await api.get(`${Endpoints.PRODUCTS}`, {params: {...params}});
       dispatch({
         type: FETCH_MENU_PRODUCTS,
@@ -70,6 +74,10 @@ export const fetchCampaignProducts = () => {
 export const fetchSearchProducts = (name: any) => {
   return async (dispatch: any) => {
     try {
+      dispatch({
+        type: FETCH_SEARCH_PRODUCTS,
+        payload: [],
+      });
       const response = await api.get(`${Endpoints.PRODUCTS}`, {
         params: { name },
       });

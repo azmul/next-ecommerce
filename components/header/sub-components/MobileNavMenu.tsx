@@ -73,28 +73,28 @@ const MobileNavMenu = ({ strings }: Iprops) => {
           </Link>
         </li>
         <li className="menu-item-has-children">
-          <Link href={"/my-account"}>
+          <Link href={"/account"}>
             Account
           </Link>
           <ul className="sub-menu">
             {!user && (
               <li>
-                <Link href={"/login-register"}>
+                <Link href={"/login"}>
                   Login
                 </Link>
               </li>
             )}
             {!user && (
               <li>
-                <Link href={"/login-register"}>
+                <Link href={"/login"}>
                   Register
                 </Link>
               </li>
             )}
             {user && (
               <li>
-                <Link href={"/my-account"}>
-                  my account
+                <Link href={"/account"}>
+                  My Account
                 </Link>
               </li>
             )}
