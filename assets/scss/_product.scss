@@ -184,6 +184,7 @@
     .product-img {
         position: relative;
         overflow: hidden;
+        cursor: pointer;
         img, span:first-child img{
             width: 100%;
         }
@@ -1218,6 +1219,7 @@
     overflow: hidden;
     .product-img {
         position: relative;
+        cursor: pointer;
         img{
             width: 100%;
         }
@@ -1389,6 +1391,7 @@
     }
     &.pro-glaucous-color {
         .product-img {
+            cursor: pointer;
             span.glaucous {
                 color: #3d6882;
             }
@@ -1545,6 +1548,7 @@
     position: relative;
 
     .product-img {
+        cursor: pointer;
         position: relative;
         a{
             img {
@@ -1936,7 +1940,7 @@
     position: relative;
     .product-img {
         position: relative;
-        
+        cursor: pointer;
         a{
             img {
                width: 100%; 

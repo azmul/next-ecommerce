@@ -7,18 +7,30 @@ import { getSortedProducts } from "../../helpers/product";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import RelatedProducts from "../../wrappers/product/RelatedProducts";
+import { NextSeo } from "next-seo";
 
 const CTAGORY = "category";
 
 const ProductDetails = ({product}) => {
+  const SEO = {
+    title: `Kureghor Ecommerce | ${product.name}`,
+    description: `Kureghor Ecommerce | ${product.shortDescription}`,
+    openGraph: {
+      title: `Kureghor Ecommerce | ${product.name}`,
+      description: `Kureghor Ecommerce | ${product.shortDescription}`,
+    }
+  }
+
   const products: any[] = useSelector(
     (state: RootState) => state.productData.products
   );
   const category = product && product.category ? product.category[0] : undefined;
   const filteredProducts = getSortedProducts(products, CTAGORY, category);
+  
 
   return (
     <div className={styles.container}>
+       <NextSeo {...SEO} />
        <ProductImageDescription
           spaceTopClass="pt-50"
           spaceBottomClass="pb-30"

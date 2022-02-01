@@ -5,10 +5,20 @@ import Post from "../../wrappers/blog/Post";
 import { Divider } from "antd";
 import { api } from "../../api/apiHelper";
 import {Endpoints} from "../../api/apiConst";
+import { NextSeo } from "next-seo";
 
 const Blog = ({blog}) => {
+  const SEO = {
+    title: `Kureghor Ecommerce | ${blog.title}`,
+    description: `Kureghor Ecommerce | ${blog.content}`,
+    openGraph: {
+      title: `Kureghor Ecommerce | ${blog.title}`,
+      description: `Kureghor Ecommerce | ${blog.content}`,
+    }
+  }
   return (
     <Fragment>
+        <NextSeo {...SEO} />
         <div className="blog-area pt-50 pb-100">
           <div className="container">
             <div className="row flex-row-reverse">

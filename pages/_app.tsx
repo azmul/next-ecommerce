@@ -11,6 +11,8 @@ import Layout from "../layouts/Layout";
 import { ToastProvider } from "react-toast-notifications";
 import { PersistGate } from 'redux-persist/integration/react'
 import Router from 'next/router';
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 
 require('isomorphic-fetch');
 
@@ -37,7 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             headerContainerClass="container-fluid"
             headerPaddingClass="header-padding-1"
             headerTop="visible"
-          >
+          > 
+            <DefaultSeo {...SEO} />
             <Component {...pageProps} />
           </Layout>
         </ToastProvider>

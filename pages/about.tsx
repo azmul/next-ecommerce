@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
+import type { NextPage } from 'next'
 import React, { Fragment } from "react";
 import SectionTitleWithText from "../components/section-title/SectionTitleWithText";
 import TextGridOne from "../wrappers/text-grid/TextGridOne";
 import TeamMemberOne from "../wrappers/team-member/TeamMemberOne";
 import { multilanguage } from "redux-multilanguage";
 
-const About = ({ location , strings}) => {
+const About: NextPage = () => {
 
   return (
     <Fragment>
@@ -21,11 +21,6 @@ const About = ({ location , strings}) => {
 
     </Fragment>
   );
-};
-
-About.propTypes = {
-  location: PropTypes.object,
-  strings: PropTypes.object
 };
 
 export default multilanguage(About);
