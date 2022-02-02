@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../assets/scss/style.scss";
+import React, {useEffect} from "react";
 import type { AppProps } from "next/app";
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
@@ -14,6 +15,7 @@ import Router from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import * as gtag from '../lib/gtag'
+import {useRouter} from "next/router";
 
 require('isomorphic-fetch');
 
@@ -28,9 +30,20 @@ NProgress.configure({
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
-Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+  
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events]);
+
   return (
     <ClearCacheProvider duration={5000}>
       <Provider store={store}>
