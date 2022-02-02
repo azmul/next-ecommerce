@@ -13,6 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import Router from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import * as gtag from '../lib/gtag'
 
 require('isomorphic-fetch');
 
@@ -27,6 +28,7 @@ NProgress.configure({
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
+Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

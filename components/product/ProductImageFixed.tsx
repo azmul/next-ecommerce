@@ -26,6 +26,7 @@ const ProductImageFixed = ({ product }) => {
             className="img-fluid"
             width={230}
             height={180}
+            priority
             layout="responsive"
           />
         ) : (

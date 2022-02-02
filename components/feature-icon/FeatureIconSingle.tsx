@@ -14,6 +14,7 @@ const FeatureIconSingle = ({ singleFeature }) => {
             width="50"
             height="38"
             layout="responsive"
+            priority
           />
         </div>
         <div className="support-content">

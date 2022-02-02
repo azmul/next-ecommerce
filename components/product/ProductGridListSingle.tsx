@@ -50,6 +50,7 @@ const ProductGridListSingle = ({
                     width={280} height={220} 
                     layout="responsive"
                     alt={product.name}
+                    priority
                   />
                 </Link>
               )}
@@ -181,6 +182,7 @@ const ProductGridListSingle = ({
                           src={product && product.image[0]}
                           width={280} height={220} 
                           layout="responsive"
+                          priority
                           alt={product.name}
                         />
                       </Link>

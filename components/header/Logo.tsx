@@ -10,7 +10,7 @@ const Logo = ({ logoClass }: Iprops) => {
   return (
     <div className={`${logoClass ? logoClass : ""}`}>
       <Link passHref href={"/"}>
-        <Image width={120} height={80} alt="LOGO" src={"/assets/img/logo/logo.png"} />
+        <Image priority width={120} height={80} alt="LOGO" src={"/assets/img/logo/logo.png"} />
       </Link>
     </div>
   );

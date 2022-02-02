@@ -8,6 +8,7 @@ import { removeFromCompare } from "../redux/actions/compareActions";
 import { getDiscountPrice } from "../helpers/product";
 import Image from "next/image";
 import { Rate } from "antd";
+import { NextSeo } from "next-seo";
 
 const Compare = ({
   cartItems,
@@ -16,10 +17,17 @@ const Compare = ({
   removeFromCompare,
   currency,
 }) => {
+  const SEO = {
+    title: "Compare | Kureghorbd",
+    openGraph: {
+      title: "Compare | Kureghorbd",
+    }
+  }
   const { addToast } = useToasts();
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="compare-main-area pt-40 pb-50">
         <div className="container">
           {compareItems && compareItems.length >= 1 ? (
@@ -56,8 +64,9 @@ const Compare = ({
                                       <Image
                                         className="img-fluid"
                                         src={compareItem.image[0]}
-                                        alt=""
+                                        alt="COMPARE"
                                         width={233}
+                                        priority
                                         height={183}
                                       />
                                     </Link>

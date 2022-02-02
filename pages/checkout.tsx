@@ -12,8 +12,15 @@ import { useSelector, useDispatch } from "react-redux";
 import * as userApi from "../api/userApi";
 import {FETCH_USER} from "../redux/actions/userActions";
 import { RootState } from "../redux/store";
+import { NextSeo } from "next-seo";
 
 const Checkout = ({ location, cartItems, currency }) => {
+  const SEO = {
+    title: "Checkout | Kureghorbd",
+    openGraph: {
+      title: "Checkout | Kureghorbd",
+    }
+  }
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [district, setDistrict] = useState(undefined);
@@ -88,6 +95,7 @@ const Checkout = ({ location, cartItems, currency }) => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
         <div className="checkout-area pt-40 pb-50">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (

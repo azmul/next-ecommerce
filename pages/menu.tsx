@@ -8,8 +8,19 @@ import { fetchMenuProducts } from "../redux/actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import ProductLoader from "../components/loader/ProductLoader";
+import { NextSeo } from "next-seo";
 
 const Menu: NextPage = () => {
+  const params = new URLSearchParams(window.location.search);
+  let item = params.get("item");
+
+  const SEO = {
+    title: `Menu | Kureghorbd ${item}`,
+    openGraph: {
+      title: `Menu | Kureghorbd ${item}`,
+    }
+  }
+
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -20,9 +31,6 @@ const Menu: NextPage = () => {
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const dispatch = useDispatch();
-
-  const params = new URLSearchParams(window.location.search);
-  let item = params.get("item");
 
   const products = useSelector(
     (state: RootState) => state.productData.menuProducts
@@ -62,6 +70,7 @@ const Menu: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">
           <div className="row">

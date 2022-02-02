@@ -30,7 +30,7 @@ const MobileNavMenu = ({ strings }: Iprops) => {
   return (
     <div className="offcanvas-navigation" id="offcanvas-navigation">
       {user && user.picture_url ? (
-        <Image width={20} height={20} src={user.picture_url} alt="PROFILE" />
+        <Image priority width={20} height={20} src={user.picture_url} alt="PROFILE" />
       ) : (
         <i className="pe-7s-user-female" />
       )}

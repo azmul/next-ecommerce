@@ -39,7 +39,7 @@ const ProductGridSingle = ({
           <div className="product-img">
           {product.image && product.image[0] && (
             <Link passHref href={"/product/" + product._id}>
-              <Image width={280} height={220} layout="responsive" className="default-img" src={product && product.image[0]} alt="" />
+              <Image width={280} priority height={220} layout="responsive" className="default-img" src={product && product.image[0]} alt="" />
             </Link>
           )}
             {/* {product.image.length > 1 && (

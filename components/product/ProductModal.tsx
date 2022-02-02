@@ -112,6 +112,7 @@ function ProductModal(props) {
                               className="img-fluid"
                               width={180}
                               height={120}
+                              priority
                               layout="responsive"
                               alt={product.name}
                             />
@@ -133,6 +134,7 @@ function ProductModal(props) {
                               className="img-fluid"
                               width={180}
                               height={120}
+                              priority
                               layout="responsive"
                               alt={product.name}
                             />

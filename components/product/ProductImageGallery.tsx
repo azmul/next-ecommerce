@@ -91,6 +91,7 @@ const ProductImageGallery = ({ product }) => {
                         alt=""
                         width={230}
                         height={180}
+                        priority
                         layout="responsive"
                       />
                     </div>
@@ -112,6 +113,7 @@ const ProductImageGallery = ({ product }) => {
                       className="img-fluid"
                       alt=""
                       width={230}
+                      priority
                       height={180}
                       layout="responsive"
                     />

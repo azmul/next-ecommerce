@@ -9,8 +9,16 @@ import * as userApi from "../api/userApi";
 import { useDispatch } from 'react-redux'
 import {FETCH_USER, USER_TOKEN} from "../redux/actions/userActions";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 
 const LoginRegister: NextPage = () => {
+  const SEO = {
+    title: "Login | Kureghorbd",
+    openGraph: {
+      title: "Login | Kureghorbd",
+    }
+  }
+
   const [loginForm] = Form.useForm();
   const [registerForm] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -113,7 +121,7 @@ const LoginRegister: NextPage = () => {
 
   return (
     <Fragment>
-
+<NextSeo {...SEO} />
         <div className="login-register-area pt-100 pb-100">
           <div className="container">
             <div className="row">

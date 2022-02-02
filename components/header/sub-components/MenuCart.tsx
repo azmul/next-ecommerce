@@ -47,6 +47,7 @@ const MenuCart = ({ cartData, currency, removeFromCart }: Iprops) => {
                           width={100}
                           height={80}
                           layout="responsive"
+                          priority
                         />
                       </Link>
                     )}

@@ -1,3 +1,4 @@
+import React, {useEffect} from 'react';
 import styles from '../../styles/Home.module.css'
 import { api } from "../../api/apiHelper";
 import {Endpoints} from "../../api/apiConst";
@@ -8,6 +9,7 @@ import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab"
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import RelatedProducts from "../../wrappers/product/RelatedProducts";
 import { NextSeo } from "next-seo";
+import * as gtag from '../../lib/gtag'
 
 const CTAGORY = "category";
 
@@ -26,6 +28,15 @@ const ProductDetails = ({product}) => {
   );
   const category = product && product.category ? product.category[0] : undefined;
   const filteredProducts = getSortedProducts(products, CTAGORY, category);
+
+  useEffect(() => {
+    gtag.event({
+      action: 'Product_Check',
+      category: 'PRODUCT',
+      label: product.name,
+      value: product.name,
+    });
+  },[product])
   
 
   return (

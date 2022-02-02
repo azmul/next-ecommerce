@@ -31,6 +31,7 @@ const BlogSidebar = () => {
                   alt={blog.title}
                   width={100}
                   height={70}
+                  priority
                   layout="responsive"
                 />
                 

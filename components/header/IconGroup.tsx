@@ -123,6 +123,7 @@ const IconGroup = ({
               height={20}
               src={user.picture_url}
               alt="PROFILE"
+              priority
             />
           ) : (
             <i className="pe-7s-user-female" />

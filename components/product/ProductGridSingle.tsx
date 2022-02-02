@@ -39,17 +39,18 @@ const ProductGridSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            {product && product.image && product.image[0] && (
+            {product && product.image && product.image.length > 0 && (
               <Link passHref href={`/product/${product._id}`}>
-                <>
-                  <Image
-                    className="default-img"
-                    src={product && product.image[0]}
-                    width={280} height={220} 
-                    layout="responsive"
-                    alt={product.name}
-                  />
-                  {/* {product.image.length > 1 && (
+                <Image
+                  className="default-img"
+                  src={product && product.image[0]}
+                  width={280}
+                  height={220}
+                  layout="responsive"
+                  alt={product.name}
+                  priority
+                />
+                {/* {product.image.length > 1 && (
                     <Link passHref href={`/product/${product._id}`}>
                       <Image
                         className="hover-img"
@@ -60,7 +61,6 @@ const ProductGridSingle = ({
                       />
                     </Link>
                   )} */}
-                </>
               </Link>
             )}
 

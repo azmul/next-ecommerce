@@ -28,7 +28,7 @@ const HeroSliderSingle = ({ data, sliderClassName }) => {
           </div>
           <div className="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
             <div className="slider-single-img slider-animated-1">
-              {IsUrl(data.image) && <Image layout='fill' className="animated img-fluid" src={data.image} alt="" />}
+              {IsUrl(data.image) && <Image priority layout='fill' className="animated img-fluid" src={data.image} alt="" />}
             </div>
           </div>
         </div>

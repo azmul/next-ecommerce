@@ -62,7 +62,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
                 <ul>
                   <li className="mega-menu-img">
                     <Link passHref={true}  href={"/product"}>
-                      <Image width={200} height={300} src={"/assets/img/nice-banner.png"} alt="BANNER" />
+                      <Image priority width={200} height={300} src={"/assets/img/nice-banner.png"} alt="BANNER" />
                     </Link>
                   </li>
                 </ul>

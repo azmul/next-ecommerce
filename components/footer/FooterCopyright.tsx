@@ -13,7 +13,7 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass }: Iprops) => {
     <div className={`copyright ${spaceBottomClass ? spaceBottomClass : ""}`}>
       <div className="footer-logo">
         <Link passHref={true}href={"/"}>
-          <Image width={100} height={80} alt="FooterLOGO" src={footerLogo} />
+          <Image width={100} priority height={80} alt="FooterLOGO" src={footerLogo} />
         </Link>
       </div>
       <p>

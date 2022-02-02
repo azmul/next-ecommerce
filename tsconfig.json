@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es5", "es6"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -23,9 +19,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "wrappers/blog/Posts.jsx", "wrappers/blog/Post.jsx", "components/contact/LocationMap.jsx", "components/product/ProductDescriptionInfo.jsx"
+    "wrappers/blog/Posts.jsx",
+    "wrappers/blog/Post.jsx",
+    "components/contact/LocationMap.jsx",
+    "components/product/ProductDescriptionInfo.jsx",
+    "lib/gtag.js",
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

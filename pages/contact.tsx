@@ -7,8 +7,15 @@ import { toast } from "react-toastify";
 import bdPhone from "@0devco/bd-phone-validator";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { NextSeo } from "next-seo";
 
 const Contact: NextPage = () => {
+  const SEO = {
+    title: "Contact | Kureghorbd",
+    openGraph: {
+      title: "Contact | Kureghorbd",
+    }
+  }
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const setting = useSelector((state: RootState) => state.settingData.setting);
@@ -58,6 +65,7 @@ const Contact: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
         <div className="contact-area pt-50 pb-100">
           <div className="container">
             <div className="contact-map mb-10">

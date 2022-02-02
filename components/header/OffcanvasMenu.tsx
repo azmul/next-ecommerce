@@ -27,6 +27,7 @@ const OffcanvasMenu = ({ activeState, getActiveState }: Iprops) => {
             width={300}
             height={300}
             src={"/img/logo.png"}
+            priority
           />
         </Link>
       </div>

@@ -106,6 +106,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                             className="img-fluid"
                             alt=""
                             width={230}
+                            priority
                             height={180}
                             layout="responsive"
                           />
@@ -137,6 +138,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                           alt=""
                           width={230}
                           height={180}
+                          priority
                           layout="responsive"
                         />
                       </div>

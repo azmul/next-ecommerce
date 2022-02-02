@@ -8,8 +8,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { fetchSearchProducts } from "../redux/actions/productActions";
 import ProductLoader from "../components/loader/ProductLoader";
+import { NextSeo } from "next-seo";
 
 const SearchPage: NextPage = () => {
+  const searchStr = useSelector((state: RootState) => state.commonData.search);
+
+  const SEO = {
+    title: `Search | Kureghorbd ${searchStr}`,
+    openGraph: {
+      title: `Search | Kureghorbd ${searchStr}`,
+    }
+  }
+  
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -21,7 +31,6 @@ const SearchPage: NextPage = () => {
   const [sortedProducts, setSortedProducts] = useState([]);
   const dispatch = useDispatch();
 
-  const searchStr = useSelector((state: RootState) => state.commonData.search);
   const products = useSelector(
     (state: RootState) => state.productData.searchProducts
   );
@@ -62,6 +71,7 @@ const SearchPage: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">
           <div className="row">

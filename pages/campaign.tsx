@@ -8,8 +8,15 @@ import { fetchCampaignProducts } from "../redux/actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import ProductLoader from "../components/loader/ProductLoader";
+import { NextSeo } from "next-seo";
 
 const Campaign: NextPage = () => {
+  const SEO = {
+    title: "Campaign | Kureghorbd",
+    openGraph: {
+      title: "Campaign | Kureghorbd",
+    }
+  }
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -59,6 +66,7 @@ const Campaign: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">
           <div className="row">

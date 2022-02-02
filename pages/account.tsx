@@ -29,8 +29,15 @@ import { usePrevious } from "../hooks/usePrevious";
 import bdPhone from "@0devco/bd-phone-validator";
 import * as address from "@bangladeshi/bangladesh-address";
 import deepEqual from "fast-deep-equal";
+import { NextSeo } from "next-seo";
 
 const MyAccount: NextPage = () => {
+  const SEO = {
+    title: "My Account | Kureghorbd",
+    openGraph: {
+      title: "My Account | Kureghorbd",
+    }
+  }
   const [changePasswordForm] = Form.useForm();
   const [myAccountForm] = Form.useForm();
   const [district, setDistrict] = useState(undefined);
@@ -135,6 +142,7 @@ const MyAccount: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="myaccount-area pb-80 pt-100">
         <div className="container">
           <div className="row">
@@ -547,6 +555,7 @@ const MyAccount: NextPage = () => {
                                                       alt="PRODUCT_IMAGE"
                                                       width={50}
                                                       height={50}
+                                                      priority
                                                       src={
                                                         product &&
                                                         product.image &&

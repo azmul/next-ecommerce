@@ -14,6 +14,7 @@ const TeamMemberOneSingle = ({ data, spaceBottomClass }) => {
             alt="Image FLuid"
             className="img-fluid"
             width={200}
+            priority
             height={180}
           />
           <div className="team-action">

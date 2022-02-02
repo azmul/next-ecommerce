@@ -11,6 +11,7 @@ import {
 } from "../redux/actions/wishlistActions";
 import { addToCart } from "../redux/actions/cartActions";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 const Wishlist = ({
   location,
@@ -21,10 +22,17 @@ const Wishlist = ({
   removeFromWishlist,
   removeAllFromWishlist,
 }) => {
+  const SEO = {
+    title: "Whislist | Kureghorbd",
+    openGraph: {
+      title: "Whislist | Kureghorbd",
+    }
+  }
   const { addToast } = useToasts();
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="cart-main-area pt-90 pb-100">
         <div className="container">
           {wishlistItems && wishlistItems.length >= 1 ? (
@@ -75,9 +83,10 @@ const Wishlist = ({
                                         className="img-fluid"
                                         src={wishlistItem.image[0]}
                                         layout="responsive"
-                                        alt=""
+                                        alt="WHISLIST"
                                         width={234}
                                         height={184}
+                                        priority
                                       />
                                     </Link>
                                   )}

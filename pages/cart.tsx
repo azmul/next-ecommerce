@@ -12,6 +12,7 @@ import {
   removeAllFromCart,
 } from "../redux/actions/cartActions";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 const Cart = ({
   cartItems,
@@ -21,12 +22,19 @@ const Cart = ({
   removeFromCart,
   removeAllFromCart,
 }) => {
+  const SEO = {
+    title: "Cart | Kureghorbd",
+    openGraph: {
+      title: "Cart | Kureghorbd",
+    }
+  }
   const [quantityCount] = useState(1);
   const { addToast } = useToasts();
   let cartTotalPrice = 0;
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="cart-main-area pt-40 pb-50">
         <div className="container">
           {cartItems && cartItems.length >= 1 ? (
@@ -80,6 +88,7 @@ const Cart = ({
                                         alt=""
                                         width={232}
                                         height={182}
+                                        priority
                                       />
                                     </Link>
                                   )}

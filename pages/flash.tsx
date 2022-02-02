@@ -8,8 +8,15 @@ import { fetchFlashProducts } from "../redux/actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import ProductLoader from "../components/loader/ProductLoader";
+import { NextSeo } from "next-seo";
 
 const Flash: NextPage = () => {
+  const SEO = {
+    title: "Flash | Kureghorbd",
+    openGraph: {
+      title: "Flash | Kureghorbd",
+    }
+  }
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -59,6 +66,7 @@ const Flash: NextPage = () => {
 
   return (
     <Fragment>
+      <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">
           <div className="row">
