@@ -9,7 +9,6 @@ import { SEARCH_STRING } from "../../redux/actions/commonActions";
 import { Form, Input, Button } from "antd";
 import { useRouter } from "next/router";
 import { RootState } from "../../redux/store";
-import Image from "next/image";
 
 type Iprops = {
   currency?: any;
@@ -113,42 +112,34 @@ const IconGroup = ({
         </div>
       </div>
       <div className="same-style account-setting d-none d-lg-block">
-      <button
-          className="account-setting-active"
-          onClick={(e) => handleClick(e)}
-        >
-          {user ? (
+        {user ? (
+          <button
+            className="account-setting-active"
+            onClick={(e) => handleClick(e)}
+          >
             <i className="pe-7s-user-female" />
-          ) : 
-            <span className="login-register-font">LOGIN/REGISTER</span>
-          }
-        </button>
-        <div className="account-dropdown">
-          <ul>
-            {!user && (
-              <li>
-                <Link href={"/login"}>LOGIN</Link>
-              </li>
-            )}
-            {!user && (
-              <li>
-                <Link href={"/login"}>REGISTER</Link>
-              </li>
-            )}
-            {user && (
+          </button>
+        ) : (
+          <button className="account-setting-active">
+            <Link passHref href={"/login"}>
+              <span className="login-register-font">LOGIN/REGISTER</span>
+            </Link>
+          </button>
+        )}
+        {user && (
+          <div className="account-dropdown">
+            <ul>
               <li>
                 <Link href={"/account"}>MY ACCOUNT</Link>
               </li>
-            )}
-            {user && (
               <li>
                 <a href={"/"} onClick={handleLogout}>
                   LOGOUT
                 </a>
               </li>
-            )}
-          </ul>
-        </div>
+            </ul>
+          </div>
+        )}
       </div>
       <div className="same-style header-compare">
         <Link passHref={true} href={"/compare"}>

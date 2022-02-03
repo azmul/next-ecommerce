@@ -1,28 +1,27 @@
 import type { NextPage } from "next";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styles from "../../styles/Home.module.css";
-import { fetchCollectionsProducts } from "../../redux/actions/productActions";
 import { useDispatch } from "react-redux";
 import Paginator from "react-hooks-paginator";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import { getSortedProducts } from "../../helpers/product";
 import ProductSidebar from "../../wrappers/product/ProductSidebar";
-import ProductTopbar from '../../wrappers/product/ProductTopbar';
+import ProductTopbar from "../../wrappers/product/ProductTopbar";
 import ProductsList from "../../wrappers/product/Products";
 import { NextSeo } from "next-seo";
+import useSWR from "swr";
+import { Endpoints } from "../../api/apiConst";
+import { FETCH_COLLECTIONS_PRODUCTS } from "../../redux/actions/productActions";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const Products: NextPage = () => {
   const SEO = {
     title: "Product | Kureghorbd",
     openGraph: {
       title: "Product | Kureghorbd",
-    }
-  }
+    },
+  };
   const dispatch = useDispatch();
-  const products: any[] = useSelector(
-    (state: RootState) => state.productData.products
-  );
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -32,6 +31,20 @@ const Products: NextPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
+  const reduxStoreProducts: any[] = useSelector(
+    (state: RootState) => state.productData.products
+  );
+
+  const { data } = useSWR(`${Endpoints.PRODUCTS}/collection`);
+  const products: any[] = useMemo(
+    () => (data ? data.data : reduxStoreProducts),
+    [data, reduxStoreProducts]
+  );
+
+  dispatch({
+    type: FETCH_COLLECTIONS_PRODUCTS,
+    payload: products,
+  });
 
   const pageLimit = 1000;
 
@@ -61,10 +74,6 @@ const Products: NextPage = () => {
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
-  useEffect(() => {
-    dispatch(fetchCollectionsProducts());
-  }, [dispatch]);
-
   return (
     <div className={styles.container}>
       <NextSeo {...SEO} />
@@ -80,7 +89,12 @@ const Products: NextPage = () => {
             </div>
             <div className="col-lg-9 order-1 order-lg-2">
               {/* shop topbar default */}
-              <ProductTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
+              <ProductTopbar
+                getLayout={getLayout}
+                getFilterSortParams={getFilterSortParams}
+                productCount={products.length}
+                sortedProductCount={currentData.length}
+              />
 
               {/* shop page content default */}
               <ProductsList layout={layout} products={currentData} />

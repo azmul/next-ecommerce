@@ -1,32 +1,51 @@
 import type { NextPage } from "next";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useMemo, useState } from "react";
 import BlogSidebar from "../../wrappers/blog/BlogSidebar";
 import BlogPosts from "../../wrappers/blog/Posts";
-import { getBlogs } from "../../redux/actions/blogActions";
-import { useDispatch, useSelector } from "react-redux";
 import { Pagination } from "antd";
-import { RootState } from "../../redux/store";
 import BlogLoader from "../../components/loader/BlogLoader";
 import { NextSeo } from "next-seo";
+import useSWR from "swr";
+import { Endpoints } from "../../api/apiConst";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { FETCH_BLOGS } from "../../redux/actions/blogActions";
 
 const BlogPage: NextPage = () => {
   const SEO = {
     title: "Blog | Kureghorbd",
     openGraph: {
       title: "Blog | Kureghorbd",
-    }
-  }
+    },
+  };
   const dispatch = useDispatch();
+  const [current, setCurrent] = useState(1);
+  const [pageSize, setPageSize] = useState(6);
 
-  const blogs = useSelector((state: RootState) => state.blogData.blogs);
+  const reduxStoreBlogs = useSelector(
+    (state: RootState) => state.blogData.blogs
+  );
+
+  const { data } = useSWR(
+    `${Endpoints.BLOG}?current=${current}&pageSize=${pageSize}`
+  );
+  
+  const blogs: any[] = useMemo(
+    () => (data ? data.data : reduxStoreBlogs),
+    [data, reduxStoreBlogs]
+  );
+  const pagination = useMemo(() => (data ? data.pagination : null), [data]);
+
+  dispatch({
+    type: FETCH_BLOGS,
+    payload: blogs,
+  });
 
   const paginationHandle = (current: number, pageSize: number) => {
-    dispatch(getBlogs({ current, pageSize }));
+    setCurrent(current);
+    setPageSize(pageSize);
   };
-
-  useEffect(() => {
-    dispatch(getBlogs({ current: 1, pageSize: 6 }));
-  }, [dispatch]);
 
   return (
     <Fragment>
@@ -35,11 +54,11 @@ const BlogPage: NextPage = () => {
         <div className="container">
           <div className="row flex-row-reverse">
             <div className="col-lg-9">
-              {blogs && blogs.data && blogs.data.length > 0 ? (
+              {blogs && blogs.length > 0 ? (
                 <div className="ml-20">
                   <div className="row">
                     {/* blog posts */}
-                    <BlogPosts blogs={blogs && blogs.data} />
+                    <BlogPosts blogs={blogs} />
                   </div>
 
                   {/* blog pagination */}
@@ -48,9 +67,7 @@ const BlogPage: NextPage = () => {
                       onChange={paginationHandle}
                       pageSize={6}
                       defaultCurrent={1}
-                      total={
-                        blogs && blogs?.pagination && blogs.pagination.total
-                      }
+                      total={blogs && pagination && pagination.total}
                     />
                   </div>
                 </div>

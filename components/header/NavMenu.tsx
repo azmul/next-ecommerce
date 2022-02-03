@@ -1,5 +1,5 @@
 import React from "react";
-import Link  from "next/link";
+import Link from "next/link";
 import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { ThunderboltOutlined, CrownOutlined } from "@ant-design/icons";
@@ -31,15 +31,15 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
           <li>
             <Link href={"/product"}>
               <>
-              {" "}
-              CATEGORIES
-              {sidebarMenu ? (
-                <span>
-                  <i className="fa fa-angle-right"></i>
-                </span>
-              ) : (
-                <i className="fa fa-angle-down" />
-              )}
+                {" "}
+                CATEGORIES
+                {sidebarMenu ? (
+                  <span>
+                    <i className="fa fa-angle-right"></i>
+                  </span>
+                ) : (
+                  <i className="fa fa-angle-down" />
+                )}
               </>
             </Link>
             <ul className="mega-menu">
@@ -49,11 +49,11 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
                     categories.length > 0 &&
                     categories.map((category: any) => (
                       <li key={category}>
-                        <Link
-                          href={"/menu?item=" + category}
-                        >
-                        {category.toUpperCase()}
-                        </Link>
+                        {category && (
+                          <Link href={"/menu?item=" + category}>
+                            {category.toUpperCase()}
+                          </Link>
+                        )}
                       </li>
                     ))}
                 </ul>
@@ -61,8 +61,14 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
               <li>
                 <ul>
                   <li className="mega-menu-img">
-                    <Link passHref={true}  href={"/product"}>
-                      <Image priority width={200} height={300} src={"/assets/img/nice-banner.png"} alt="BANNER" />
+                    <Link passHref={true} href={"/product"}>
+                      <Image
+                        priority
+                        width={200}
+                        height={300}
+                        src={"/assets/img/nice-banner.png"}
+                        alt="BANNER"
+                      />
                     </Link>
                   </li>
                 </ul>
@@ -87,9 +93,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
             <Link href={"/blog"}>BLOG</Link>
           </li>
           <li>
-            <Link href={"/contact"}>
-              CONTACT
-            </Link>
+            <Link href={"/contact"}>CONTACT</Link>
           </li>
         </ul>
       </nav>

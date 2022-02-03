@@ -17,7 +17,8 @@ import SEO from "../next-seo.config";
 import * as gtag from "../lib/gtag";
 import Script from "next/script";
 import { GA_TRACKING_ID } from "../lib/gtag";
-
+import { SWRConfig } from "swr";
+import { api } from "../api/apiHelper";
 require("isomorphic-fetch");
 
 NProgress.configure({
@@ -31,7 +32,7 @@ NProgress.configure({
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
-Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
+Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -54,19 +55,20 @@ function MyApp({ Component, pageProps }: AppProps) {
           gtag('config','${GA_TRACKING_ID}');
         `}
       </Script>
-
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ToastProvider placement="bottom-left">
-            <Layout
-              headerContainerClass="container-fluid"
-              headerPaddingClass="header-padding-1"
-              headerTop="visible"
-            >
-              <DefaultSeo {...SEO} />
-              <Component {...pageProps} />
-            </Layout>
-          </ToastProvider>
+          <SWRConfig value={{ dedupingInterval: 5000, fetcher: (url: string) => api.get(url).then(res => res.data) }}>
+            <ToastProvider placement="bottom-left">
+              <Layout
+                headerContainerClass="container-fluid"
+                headerPaddingClass="header-padding-1"
+                headerTop="visible"
+              >
+                <DefaultSeo {...SEO} />
+                <Component {...pageProps} />
+              </Layout>
+            </ToastProvider>
+          </SWRConfig>
         </PersistGate>
       </Provider>
     </ClearCacheProvider>

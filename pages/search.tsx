@@ -1,14 +1,17 @@
 import type { NextPage } from "next";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useMemo } from "react";
 import Paginator from "react-hooks-paginator";
 import { getSortedProducts } from "../helpers/product";
 import ShopTopbarFilter from "../wrappers/product/ShopTopbarFilter";
 import ProductList from "../wrappers/product/Products";
+import { NextSeo } from "next-seo";
+import { Endpoints } from "../api/apiConst";
+import useSWR from "swr";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { fetchSearchProducts } from "../redux/actions/productActions";
-import ProductLoader from "../components/loader/ProductLoader";
-import { NextSeo } from "next-seo";
+import { FETCH_SEARCH_PRODUCTS } from "../redux/actions/productActions";
+
+const pageLimit = 100;
 
 const SearchPage: NextPage = () => {
   const searchStr = useSelector((state: RootState) => state.commonData.search);
@@ -20,6 +23,7 @@ const SearchPage: NextPage = () => {
     }
   }
   
+  const dispatch = useDispatch();
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -29,13 +33,18 @@ const SearchPage: NextPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-  const dispatch = useDispatch();
 
-  const products = useSelector(
+  const reduxStoreProducts = useSelector(
     (state: RootState) => state.productData.searchProducts
   );
 
-  const pageLimit = 100;
+  const {data} = useSWR(`${Endpoints.PRODUCTS}?name=${searchStr}`);
+  const products: any[] = useMemo(() => data ? data.data : reduxStoreProducts, [data, reduxStoreProducts]);
+
+  dispatch({
+    type: FETCH_SEARCH_PRODUCTS,
+    payload: products,
+  });
 
   const getLayout = (layout: any) => {
     setLayout(layout);
@@ -63,12 +72,6 @@ const SearchPage: NextPage = () => {
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
-  useEffect(() => {
-    if (searchStr) {
-      dispatch(fetchSearchProducts(searchStr));
-    }
-  }, [dispatch, searchStr]);
-
   return (
     <Fragment>
       <NextSeo {...SEO} />
@@ -85,7 +88,7 @@ const SearchPage: NextPage = () => {
                 products={products}
                 getSortParams={getSortParams}
               />
-              {products && products.length > 0 ? (
+              {products && products.length > 0 && (
                 <>
                   {/* shop page content default */}
                   <ProductList layout={layout} products={currentData} />
@@ -105,8 +108,6 @@ const SearchPage: NextPage = () => {
                     />
                   </div>
                 </>
-              ) : (
-                <ProductLoader />
               )}
             </div>
           </div>

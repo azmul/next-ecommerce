@@ -1,14 +1,18 @@
 import type { NextPage } from "next";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useMemo } from "react";
 import Paginator from "react-hooks-paginator";
 import { getSortedProducts } from "../helpers/product";
 import ShopTopbarFilter from "../wrappers/product/ShopTopbarFilter";
 import ProductList from "../wrappers/product/Products";
-import { fetchFlashProducts } from "../redux/actions/productActions";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/store";
 import ProductLoader from "../components/loader/ProductLoader";
 import { NextSeo } from "next-seo";
+import { Endpoints } from "../api/apiConst";
+import useSWR from "swr";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../redux/store";
+import { FETCH_FLASH_PRODUCTS } from "../redux/actions/productActions";
+
+const pageLimit = 100;
 
 const Flash: NextPage = () => {
   const SEO = {
@@ -17,6 +21,8 @@ const Flash: NextPage = () => {
       title: "Flash | Kureghorbd",
     }
   }
+
+  const dispatch = useDispatch();
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -26,14 +32,19 @@ const Flash: NextPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-  const dispatch = useDispatch();
 
-  const products = useSelector(
+  const reduxStoreProducts = useSelector(
     (state: RootState) => state.productData.flashProducts
   );
 
-  const pageLimit = 100;
+  const {data} = useSWR(`${Endpoints.PRODUCTS}/flash`);
+  const products: any[] = useMemo(() => data ? data.data : reduxStoreProducts, [data, reduxStoreProducts]);
 
+  dispatch({
+    type: FETCH_FLASH_PRODUCTS,
+    payload: products,
+  });
+  
   const getLayout = (layout) => {
     setLayout(layout);
   };
@@ -49,20 +60,20 @@ const Flash: NextPage = () => {
   };
 
   useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-    sortedProducts = filterSortedProducts;
-    setSortedProducts(sortedProducts);
-    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+      let sortedProducts = getSortedProducts(products, sortType, sortValue);
+      const filterSortedProducts = getSortedProducts(
+        sortedProducts,
+        filterSortType,
+        filterSortValue
+      );
+      sortedProducts = filterSortedProducts;
+      setSortedProducts(sortedProducts);
+      setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
-  useEffect(() => {
-    dispatch(fetchFlashProducts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchFlashProducts());
+  // }, [dispatch]);
 
   return (
     <Fragment>

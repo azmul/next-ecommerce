@@ -1,10 +1,7 @@
-import type { NextPage } from 'next'
-import React, { useEffect, Fragment } from "react";
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import React, { useEffect, Fragment, useMemo } from "react";
+import styles from "../styles/Home.module.css";
 import { useDispatch } from "react-redux";
-import {
-  fetchProducts
-} from "../redux/actions/productActions";
 import { getSetting } from "../redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
 import { fetchCategories, fetchTags } from "../redux/actions/commonActions";
@@ -20,6 +17,9 @@ import RelatedProducts from "../wrappers/product/RelatedProducts";
 import { useRouter } from "next/router";
 import { RootState } from "../redux/store";
 import { NextSeo } from "next-seo";
+import useSWR from "swr";
+import { Endpoints } from "../api/apiConst";
+import { FETCH_HOME_PRODUCTS } from "../redux/actions/productActions";
 
 const { Panel } = Collapse;
 const CTAGORY = "category";
@@ -29,17 +29,31 @@ const Home: NextPage = () => {
     title: "Home | Kureghorbd",
     openGraph: {
       title: "Home | Kureghorbd",
-    }
-  }
+    },
+  };
 
   const dispatch = useDispatch();
   const { isLatestVersion, emptyCacheStorage } = useClearCacheCtx();
-
   const router = useRouter();
-  const products = useSelector((state: RootState) => state.productData.homeProducts);
-  const categories = useSelector((state: RootState) => state.commonData.categories);
-  const productsGrid = [];
 
+  const reduxStoreProducts = useSelector(
+    (state: RootState) => state.productData.homeProducts
+  );
+  const { data: productsData } = useSWR(`${Endpoints.PRODUCTS}/home`);
+  const products: any[] = useMemo(
+    () => (productsData ? productsData.data : reduxStoreProducts),
+    [productsData, reduxStoreProducts]
+  );
+  dispatch({
+    type: FETCH_HOME_PRODUCTS,
+    payload: products,
+  });
+
+  const categories = useSelector(
+    (state: RootState) => state.commonData.categories
+  );
+
+  const productsGrid = [];
   categories.forEach((category) => {
     const categoriesProducts = getSortedProducts(products, CTAGORY, category);
     if (categoriesProducts.length > 0) {
@@ -63,22 +77,21 @@ const Home: NextPage = () => {
         },
       })
     );
-    dispatch(fetchProducts());
     dispatch(getSetting());
     dispatch(fetchCategories());
     dispatch(fetchTags());
   }, [dispatch]);
 
-    /** Empty Cache when new version comes */
-    useEffect(() => {
-      if (!isLatestVersion) {
-        emptyCacheStorage();
-      }
-    }, [emptyCacheStorage, isLatestVersion]);
+  /** Empty Cache when new version comes */
+  useEffect(() => {
+    if (!isLatestVersion) {
+      emptyCacheStorage();
+    }
+  }, [emptyCacheStorage, isLatestVersion]);
 
   return (
     <div className={styles.container}>
-       <NextSeo {...SEO} />
+      <NextSeo {...SEO} />
 
       <Fragment>
         {/* hero slider */}
@@ -97,7 +110,10 @@ const Home: NextPage = () => {
                 key={item.category}
                 header={<h4>{item.category} Products</h4>}
                 extra={
-                  <Button type="primary" onClick={() => goToProductDetails(item.category)}>
+                  <Button
+                    type="primary"
+                    onClick={() => goToProductDetails(item.category)}
+                  >
                     Show More Products
                   </Button>
                 }
@@ -111,10 +127,9 @@ const Home: NextPage = () => {
         <br />
         {/* testimonial */}
         <TestimonialOne />
-    </Fragment>
-      
+      </Fragment>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
