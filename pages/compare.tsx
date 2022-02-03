@@ -89,7 +89,7 @@ const Compare = ({
                                   ) : compareItem.variation &&
                                     compareItem.variation.length >= 1 ? (
                                     <Link
-                                      href={`${process.env.PUBLIC_URL}/product/${compareItem.id}`}
+                                      href={`/product/${compareItem.id}`}
                                     >
                                       Select Option
                                     </Link>

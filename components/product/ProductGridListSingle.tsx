@@ -107,7 +107,7 @@ const ProductGridListSingle = ({
                     </a>
                   ) : product.variation && product.variation.length >= 1 ? (
                     <Link
-                      href={`${process.env.PUBLIC_URL}/product/${product._id}`}
+                      href={`/product/${product._id}`}
                     >
                       Select Option
                     </Link>
@@ -263,7 +263,7 @@ const ProductGridListSingle = ({
                         </a>
                       ) : product.variation && product.variation.length >= 1 ? (
                         <Link
-                          href={`${process.env.PUBLIC_URL}/product/${product._id}`}
+                          href={`/product/${product._id}`}
                         >
                           Select Option
                         </Link>
