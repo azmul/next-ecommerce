@@ -31,7 +31,7 @@ const IconGroup = ({
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state: RootState) => state.userData.user);
+  const user: any = useSelector((state: RootState) => state.userData.user);
   const [form] = Form.useForm();
 
   const handleClick = (e: any) => {
@@ -113,43 +113,37 @@ const IconGroup = ({
         </div>
       </div>
       <div className="same-style account-setting d-none d-lg-block">
-        <button
+      <button
           className="account-setting-active"
           onClick={(e) => handleClick(e)}
         >
-          {user && user.picture_url ? (
-            <Image
-              width={20}
-              height={20}
-              src={user.picture_url}
-              alt="PROFILE"
-              priority
-            />
-          ) : (
+          {user ? (
             <i className="pe-7s-user-female" />
-          )}
+          ) : 
+            <span className="login-register-font">LOGIN/REGISTER</span>
+          }
         </button>
         <div className="account-dropdown">
           <ul>
             {!user && (
               <li>
-                <Link href={"/login"}>Login</Link>
+                <Link href={"/login"}>LOGIN</Link>
               </li>
             )}
             {!user && (
               <li>
-                <Link href={"/login"}>Register</Link>
+                <Link href={"/login"}>REGISTER</Link>
               </li>
             )}
             {user && (
               <li>
-                <Link href={"/account"}>my account</Link>
+                <Link href={"/account"}>MY ACCOUNT</Link>
               </li>
             )}
             {user && (
               <li>
                 <a href={"/"} onClick={handleLogout}>
-                  Logout
+                  LOGOUT
                 </a>
               </li>
             )}

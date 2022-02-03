@@ -43,7 +43,7 @@ const MobileNavMenu = ({ strings }: Iprops) => {
               categories.map((category: any) => (
                 <li key={category}>
                   <Link href={"/menu?item=" + category}>
-                    {category}
+                    {category.toUpperCase()}
                   </Link>
                 </li>
               ))}
@@ -51,57 +51,57 @@ const MobileNavMenu = ({ strings }: Iprops) => {
         </li>
         <li>
           <Link href={"/product"}>
-            Products
+            PRODUCTS
           </Link>
         </li>
         {setting && setting.is_campaign_sell && (
           <li className="campaign-products">
-            <Link href={"/campaign"}>Campaign</Link>
+            <Link href={"/campaign"}>CAMPAIGN</Link>
           </li>
         )}
         {setting && setting.is_flash_sell && (
           <li className="flash-products">
-            <Link href={"/flash"}>Flash Sell</Link>
+            <Link href={"/flash"}>FLASH SELL</Link>
           </li>
         )}
         <li className="menu-item-has-children">
-          <Link href={"/blog"}>Blog</Link>
+          <Link href={"/blog"}>BLOG</Link>
         </li>
         <li>
           <Link href={"/contact"}>
-            Contact
+            CONTACT
           </Link>
         </li>
         <li className="menu-item-has-children">
           <Link href={"/account"}>
-            Account
+            ACCOUNT
           </Link>
           <ul className="sub-menu">
             {!user && (
               <li>
                 <Link href={"/login"}>
-                  Login
+                  LOGIN
                 </Link>
               </li>
             )}
             {!user && (
               <li>
                 <Link href={"/login"}>
-                  Register
+                  REGISTER
                 </Link>
               </li>
             )}
             {user && (
               <li>
                 <Link href={"/account"}>
-                  My Account
+                  MY ACCOUNT
                 </Link>
               </li>
             )}
             {user && (
               <li>
                 <a href={"/"} onClick={handleLogout}>
-                  Logout
+                  LOGOUT
                 </a>
               </li>
             )}
