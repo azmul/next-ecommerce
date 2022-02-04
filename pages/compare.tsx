@@ -207,7 +207,7 @@ const Compare = ({
                   </div>
                   <div className="item-empty-area__text">
                     No items found in compare <br />{" "}
-                    <Link href={process.env.PUBLIC_URL + "/product"}>
+                    <Link href={"/product"}>
                       Add Items
                     </Link>
                   </div>

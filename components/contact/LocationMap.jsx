@@ -17,7 +17,7 @@ const FooterMap = props => {
       <Marker
         position={{ lat: 23.2619279, lng: 89.0092563 }}
         icon={{
-          url: `${process.env.PUBLIC_URL + "/assets/img/icon-img/2.png"}`,
+          url: "/assets/img/icon-img/2.png",
         }}
         animation={props.google.maps.Animation.BOUNCE}
       />

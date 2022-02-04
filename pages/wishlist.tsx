@@ -196,7 +196,7 @@ const Wishlist = ({
                 <div className="col-lg-12">
                   <div className="cart-shiping-update-wrapper">
                     <div className="cart-shiping-update">
-                      <Link href={process.env.PUBLIC_URL + "/product"}>
+                      <Link href={"/product"}>
                         Continue Shopping
                       </Link>
                     </div>
@@ -218,7 +218,7 @@ const Wishlist = ({
                   </div>
                   <div className="item-empty-area__text">
                     No items found in wishlist <br />{" "}
-                    <Link href={process.env.PUBLIC_URL + "/product"}>
+                    <Link href={"/product"}>
                       Add Items
                     </Link>
                   </div>

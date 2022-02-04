@@ -84,7 +84,7 @@ const Post = ({ blog }) => {
               <li>
                 <FacebookShareButton
                   className="facebook"
-                  url={`${process.env.PUBLIC_URL}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog._id}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-facebook" />
@@ -93,7 +93,7 @@ const Post = ({ blog }) => {
               <li>
                 <TwitterShareButton
                   className="twitter"
-                  url={`${process.env.PUBLIC_URL}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog._id}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-twitter" />
@@ -102,7 +102,7 @@ const Post = ({ blog }) => {
               <li>
                 <PinterestShareButton
                   className="instagram"
-                  url={`${process.env.PUBLIC_URL}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog._id}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-instagram" />

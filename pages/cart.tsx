@@ -97,7 +97,6 @@ const Cart = ({
                               <td className="product-name">
                                 <Link
                                   href={
-                                    process.env.PUBLIC_URL +
                                     "/product/" +
                                     cartItem.id
                                   }
