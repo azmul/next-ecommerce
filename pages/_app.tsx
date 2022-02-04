@@ -39,8 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ClearCacheProvider duration={5000}>
       <Script
         src="https://embed.tawk.to/61ed3eecb9e4e21181bb6ab1/1fq3brjn5"
-        id="ChatTalk"
-        async
+        strategy="afterInteractive"
       />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
