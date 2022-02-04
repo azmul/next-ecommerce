@@ -1,6 +1,5 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
@@ -9,10 +8,20 @@ const persistConfig = {
   key: 'root',
   storage,
 }
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const composeEnhancers =
+  (process.env.ENVIROMENT !== 'production' &&
+    typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
-let store = createStore(persistedReducer,  composeWithDevTools(applyMiddleware(thunk)))
+let store = createStore(persistedReducer,  composeEnhancers(applyMiddleware(thunk)))
 let persistor = persistStore(store)
 
   // Infer the `RootState` and `AppDispatch` types from the store itself
