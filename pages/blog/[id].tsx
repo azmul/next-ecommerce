@@ -64,6 +64,7 @@ export async function getStaticPaths() {
             props: {
                 blog: response.data
             }, 
+            revalidate: 10,
           }
     } finally {}
   }

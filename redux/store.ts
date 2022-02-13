@@ -16,7 +16,7 @@ declare global {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const composeEnhancers =
-  (process.env.ENVIROMENT !== 'production' &&
+  (process.env.NEXT_PUBLIC_ENVIROMENT !== 'production' &&
     typeof window !== 'undefined' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;

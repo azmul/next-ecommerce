@@ -70,9 +70,9 @@ import {store} from "../redux/store";
 
 /** Setup an API instance */
 export const api = axios.create({
-    baseURL: process.env.API_HOST,
+    baseURL: process.env.NEXT_PUBLIC_API_HOST,
     headers: {
-      Application: process.env.APPLICATION,
+      Application: process.env.NEXT_PUBLIC_APPLICATION,
       "Content-Type": "application/json",
     },
     paramsSerializer: params => {
