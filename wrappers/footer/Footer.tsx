@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Link  from "next/link";
 import { animateScroll } from "react-scroll";
-import FooterCopyright from "../../components/footer/FooterCopyright";
-import FooterNewsletter from "../../components/footer/FooterNewsletter";
+import FooterCopyright from "components/footer/FooterCopyright";
+import FooterNewsletter from "components/footer/FooterNewsletter";
 import { useSelector } from "react-redux";
-import {RootState} from "../../redux/store";
+import {RootState} from "redux/store";
 
 type Iprops = { 
     backgroundColorClass?: any;

@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
-import styles from '../../styles/Home.module.css'
-import { api } from "../../api/apiHelper";
-import {Endpoints} from "../../api/apiConst";
+import styles from 'styles/Home.module.css'
+import { api } from "api/apiHelper";
+import {Endpoints} from "api/apiConst";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { getSortedProducts } from "../../helpers/product";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
-import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
-import RelatedProducts from "../../wrappers/product/RelatedProducts";
+import { RootState } from "redux/store";
+import { getSortedProducts } from "helpers/product";
+import ProductDescriptionTab from "wrappers/product/ProductDescriptionTab";
+import ProductImageDescription from "wrappers/product/ProductImageDescription";
+import RelatedProducts from "wrappers/product/RelatedProducts";
 import { NextSeo } from "next-seo";
-import * as gtag from '../../lib/gtag'
+import * as gtag from 'lib/gtag'
 
 const CTAGORY = "category";
 

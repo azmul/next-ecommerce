@@ -3,7 +3,7 @@ import Link from "next/link";
 import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { ThunderboltOutlined, CrownOutlined } from "@ant-design/icons";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 import Image from "next/image";
 
 type Iprops = {

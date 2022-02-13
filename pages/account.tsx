@@ -15,17 +15,17 @@ import {
   Radio,
   DatePicker,
 } from "antd";
-import * as userApi from "../api/userApi";
+import * as userApi from "api/userApi";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { FETCH_USER, USER_TOKEN } from "../redux/actions/userActions";
+import { FETCH_USER, USER_TOKEN } from "redux/actions/userActions";
 import moment from "moment";
-import { DELIVERY } from "../constant/delivery";
-import { DateFormats } from "../constant/date";
-import { RootState } from "../redux/store";
+import { DELIVERY } from "constant/delivery";
+import { DateFormats } from "constant/date";
+import { RootState } from "redux/store";
 import Image from "next/image";
-import { getUser } from "../redux/actions/userActions";
-import { usePrevious } from "../hooks/usePrevious";
+import { getUser } from "redux/actions/userActions";
+import { usePrevious } from "hooks/usePrevious";
 import bdPhone from "@0devco/bd-phone-validator";
 import * as address from "@bangladeshi/bangladesh-address";
 import deepEqual from "fast-deep-equal";

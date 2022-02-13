@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import textGridData from "../../data/text-grid-one.json";
-import TextGridOneSingle from "../../components/text-grid/TextGridOneSingle";
+import textGridData from "data/text-grid-one.json";
+import TextGridOneSingle from "components/text-grid/TextGridOneSingle";
 
 const TextGridOne = ({ spaceBottomClass }) => {
   return (

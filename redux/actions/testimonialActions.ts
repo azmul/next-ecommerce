@@ -1,5 +1,5 @@
-import {Endpoints} from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
+import {Endpoints} from "api/apiConst";
+import { api } from "api/apiHelper";
 
 export const FETCH_TESTIMONIAL = "FETCH_TESTIMONIAL";
 

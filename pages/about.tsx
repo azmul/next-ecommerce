@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import React, { Fragment } from "react";
-import SectionTitleWithText from "../components/section-title/SectionTitleWithText";
-import TextGridOne from "../wrappers/text-grid/TextGridOne";
-import TeamMemberOne from "../wrappers/team-member/TeamMemberOne";
+import SectionTitleWithText from "components/section-title/SectionTitleWithText";
+import TextGridOne from "wrappers/text-grid/TextGridOne";
+import TeamMemberOne from "wrappers/team-member/TeamMemberOne";
 import { multilanguage } from "redux-multilanguage";
 import { NextSeo } from "next-seo";
 

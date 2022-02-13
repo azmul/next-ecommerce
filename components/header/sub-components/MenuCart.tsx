@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import { useToasts } from "react-toast-notifications";
-import { getDiscountPrice } from "../../../helpers/product";
+import { getDiscountPrice } from "helpers/product";
 import Image from "next/image";
 
 type Iprops = {

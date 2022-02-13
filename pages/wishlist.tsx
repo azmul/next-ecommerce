@@ -3,13 +3,13 @@ import React, { Fragment } from "react";
 import Link  from "next/link";
 import { useToasts } from "react-toast-notifications";
 import { connect } from "react-redux";
-import { getDiscountPrice } from "../helpers/product";
+import { getDiscountPrice } from "helpers/product";
 import {
   addToWishlist,
   removeFromWishlist,
   removeAllFromWishlist,
-} from "../redux/actions/wishlistActions";
-import { addToCart } from "../redux/actions/cartActions";
+} from "redux/actions/wishlistActions";
+import { addToCart } from "redux/actions/cartActions";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 

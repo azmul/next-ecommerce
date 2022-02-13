@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
-import SectionTitle from "../../components/section-title/SectionTitle";
+import SectionTitle from "components/section-title/SectionTitle";
 import ProductGrid from "./ProductGrid";
 
 const TabProduct = ({

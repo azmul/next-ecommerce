@@ -1,7 +1,7 @@
 import React from "react";
 import { multilanguage, changeLanguage } from "redux-multilanguage";
 import { connect } from "react-redux";
-import { changeCurrency } from "../../../redux/actions/currencyActions";
+import { changeCurrency } from "redux/actions/currencyActions";
 
 type Iprops = {
   currency: any

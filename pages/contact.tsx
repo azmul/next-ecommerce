@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import React, { Fragment, useState } from "react";
-import LocationMap from "../components/contact/LocationMap";
+import LocationMap from "components/contact/LocationMap";
 import { Form, Input, Button } from "antd";
-import * as contactApi from "../api/contactApi";
+import * as contactApi from "api/contactApi";
 import { toast } from "react-toastify";
 import bdPhone from "@0devco/bd-phone-validator";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "redux/store";
 import { NextSeo } from "next-seo";
 
 const Contact: NextPage = () => {

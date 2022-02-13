@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
-import BlogSidebar from "../../wrappers/blog/BlogSidebar";
-import Comment from "../../wrappers/blog/Comment";
-import Post from "../../wrappers/blog/Post";
+import BlogSidebar from "wrappers/blog/BlogSidebar";
+import Comment from "wrappers/blog/Comment";
+import Post from "wrappers/blog/Post";
 import { Divider } from "antd";
-import { api } from "../../api/apiHelper";
-import {Endpoints} from "../../api/apiConst";
+import { api } from "api/apiHelper";
+import {Endpoints} from "api/apiConst";
 import { NextSeo } from "next-seo";
 
 const Blog = ({blog}) => {

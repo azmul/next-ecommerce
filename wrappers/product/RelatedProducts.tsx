@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import ProductGridSingle from "../../components/product/RelatedProductSingle";
-import { addToCart } from "../../redux/actions/cartActions";
-import { addToWishlist } from "../../redux/actions/wishlistActions";
-import { addToCompare } from "../../redux/actions/compareActions";
+import ProductGridSingle from "components/product/RelatedProductSingle";
+import { addToCart } from "redux/actions/cartActions";
+import { addToWishlist } from "redux/actions/wishlistActions";
+import { addToCompare } from "redux/actions/compareActions";
 import Carousel from "react-multi-carousel";
-import SectionTitle from "../../components/section-title/SectionTitle";
+import SectionTitle from "components/section-title/SectionTitle";
 
 const ProductGrid = ({
   title,

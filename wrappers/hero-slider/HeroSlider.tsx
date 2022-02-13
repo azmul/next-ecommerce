@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import Swiper from "react-id-swiper";
-import HeroSliderSingle from "../../components/hero-slider/HeroSliderSingle";
+import HeroSliderSingle from "components/hero-slider/HeroSliderSingle";
 import { useDispatch, useSelector } from "react-redux";
-import { getSliders } from "../../redux/actions/sliderActions";
-import { RootState } from "../../redux/store";
+import { getSliders } from "redux/actions/sliderActions";
+import { RootState } from "redux/store";
 
 const HeroSliderOne = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
-import {Endpoints} from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
+import {Endpoints} from "api/apiConst";
+import { api } from "api/apiHelper";
 
 export const FETCH_USER = "FETCH_USER";
 export const USER_TOKEN = "USER_TOKEN";

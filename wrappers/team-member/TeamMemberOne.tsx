@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import SectionTitleTwo from "../../components/section-title/SectionTitleTwo";
-import teamMemberData from "../../data/team-member-one.json";
-import TeamMemberOneSingle from "../../components/team-member/TeamMemberOneSingle";
+import SectionTitleTwo from "components/section-title/SectionTitleTwo";
+import teamMemberData from "data/team-member-one.json";
+import TeamMemberOneSingle from "components/team-member/TeamMemberOneSingle";
 
 const TeamMemberOne = ({ spaceTopClass, spaceBottomClass }) => {
   return (

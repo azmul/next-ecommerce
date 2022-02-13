@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState, useEffect } from "react";
 import Swiper from "react-id-swiper";
-import { getProductCartQty } from "../../helpers/product";
+import { getProductCartQty } from "helpers/product";
 import { Modal } from "react-bootstrap";
 import { Rate } from "antd";
 import { connect } from "react-redux";

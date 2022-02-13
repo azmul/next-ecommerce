@@ -3,14 +3,14 @@ import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { useToasts } from "react-toast-notifications";
 import { connect } from "react-redux";
-import { getDiscountPrice } from "../helpers/product";
+import { getDiscountPrice } from "helpers/product";
 import {
   addToCart,
   decrementQty,
   removeFromCart,
   cartItemStock,
   removeAllFromCart,
-} from "../redux/actions/cartActions";
+} from "redux/actions/cartActions";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 

@@ -1,16 +1,16 @@
 import type { NextPage } from "next";
 import React, { Fragment, useState, useEffect, useMemo } from "react";
 import Paginator from "react-hooks-paginator";
-import { getSortedProducts } from "../helpers/product";
-import ShopTopbarFilter from "../wrappers/product/ShopTopbarFilter";
-import ProductList from "../wrappers/product/Products";
-import ProductLoader from "../components/loader/ProductLoader";
+import { getSortedProducts } from "helpers/product";
+import ShopTopbarFilter from "wrappers/product/ShopTopbarFilter";
+import ProductList from "wrappers/product/Products";
+import ProductLoader from "components/loader/ProductLoader";
 import { NextSeo } from "next-seo";
 import useSWR from "swr";
-import { Endpoints } from "../api/apiConst";
+import { Endpoints } from "api/apiConst";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/store";
-import { FETCH_CAMPAIGN_PRODUCTS } from "../redux/actions/productActions";
+import { RootState } from "redux/store";
+import { FETCH_CAMPAIGN_PRODUCTS } from "redux/actions/productActions";
 
 const pageLimit = 100;
 

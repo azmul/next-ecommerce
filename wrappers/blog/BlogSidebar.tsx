@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import  Link  from "next/link";
 import { Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecentBlogs } from "../../redux/actions/blogActions";
-import {RootState} from "../../redux/store";
+import { getRecentBlogs } from "redux/actions/blogActions";
+import {RootState} from "redux/store";
 import Image from "next/image";
 
 const BlogSidebar = () => {

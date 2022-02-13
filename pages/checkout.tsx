@@ -2,16 +2,16 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
-import { getDiscountPrice } from "../helpers/product";
-import { getOrderPayload } from "../helpers/checkout";
+import { getDiscountPrice } from "helpers/product";
+import { getOrderPayload } from "helpers/checkout";
 import { Form, Input, Button, Select, message } from "antd";
 import * as address from "@bangladeshi/bangladesh-address";
 import bdPhone from "@0devco/bd-phone-validator";
-import * as orderApi from "../api/orderApi";
+import * as orderApi from "api/orderApi";
 import { useSelector, useDispatch } from "react-redux";
-import * as userApi from "../api/userApi";
-import {FETCH_USER} from "../redux/actions/userActions";
-import { RootState } from "../redux/store";
+import * as userApi from "api/userApi";
+import {FETCH_USER} from "redux/actions/userActions";
+import { RootState } from "redux/store";
 import { NextSeo } from "next-seo";
 
 const Checkout = ({ location, cartItems, currency }) => {

@@ -1,18 +1,18 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState, useMemo } from "react";
-import styles from "../../styles/Home.module.css";
+import styles from "styles/Home.module.css";
 import { useDispatch } from "react-redux";
 import Paginator from "react-hooks-paginator";
-import { getSortedProducts } from "../../helpers/product";
-import ProductSidebar from "../../wrappers/product/ProductSidebar";
-import ProductTopbar from "../../wrappers/product/ProductTopbar";
-import ProductsList from "../../wrappers/product/Products";
+import { getSortedProducts } from "helpers/product";
+import ProductSidebar from "wrappers/product/ProductSidebar";
+import ProductTopbar from "wrappers/product/ProductTopbar";
+import ProductsList from "wrappers/product/Products";
 import { NextSeo } from "next-seo";
 import useSWR from "swr";
-import { Endpoints } from "../../api/apiConst";
-import { FETCH_COLLECTIONS_PRODUCTS } from "../../redux/actions/productActions";
+import { Endpoints } from "api/apiConst";
+import { FETCH_COLLECTIONS_PRODUCTS } from "redux/actions/productActions";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 
 const Products: NextPage = () => {
   const SEO = {

@@ -3,11 +3,11 @@ import React, { useEffect } from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchReview, fetchQuestion } from "../../redux/actions/productActions";
+import { fetchReview, fetchQuestion } from "redux/actions/productActions";
 import ProductQuestion from "./Question";
 import ProductReview from "./Review";
 import { Descriptions, Row, Col } from "antd";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 
 const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
   const dispatch = useDispatch();

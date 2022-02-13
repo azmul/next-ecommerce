@@ -6,7 +6,7 @@ import {
   getUniqueColors,
   getProductsUniqueSizes,
   setActiveSort
-} from "../../helpers/product";
+} from "helpers/product";
 
 const ShopTopFilter = ({ products, getSortParams }) => {
   const uniqueCategories = getUniqueCategories(products);

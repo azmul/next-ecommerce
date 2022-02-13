@@ -1,16 +1,16 @@
 import type { NextPage } from "next";
 import React, { Fragment, useMemo, useState } from "react";
-import BlogSidebar from "../../wrappers/blog/BlogSidebar";
-import BlogPosts from "../../wrappers/blog/Posts";
+import BlogSidebar from "wrappers/blog/BlogSidebar";
+import BlogPosts from "wrappers/blog/Posts";
 import { Pagination } from "antd";
-import BlogLoader from "../../components/loader/BlogLoader";
+import BlogLoader from "components/loader/BlogLoader";
 import { NextSeo } from "next-seo";
 import useSWR from "swr";
-import { Endpoints } from "../../api/apiConst";
+import { Endpoints } from "api/apiConst";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 import { useDispatch } from "react-redux";
-import { FETCH_BLOGS } from "../../redux/actions/blogActions";
+import { FETCH_BLOGS } from "redux/actions/blogActions";
 
 const BlogPage: NextPage = () => {
   const SEO = {

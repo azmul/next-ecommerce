@@ -3,8 +3,8 @@ import Link from "next/link";
 import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { FETCH_USER, USER_TOKEN } from "../../../redux/actions/userActions";
-import { RootState } from "../../../redux/store";
+import { FETCH_USER, USER_TOKEN } from "redux/actions/userActions";
+import { RootState } from "redux/store";
 import Image from "next/image";
 
 type Iprops = {

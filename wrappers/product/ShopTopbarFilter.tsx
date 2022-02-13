@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
-import ShopTopActionFilter from "../../components/product/ShopTopActionFilter";
+import ShopTopActionFilter from "components/product/ShopTopActionFilter";
 
 const ShopTopbar = ({
   getLayout,

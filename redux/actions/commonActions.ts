@@ -1,5 +1,5 @@
-import {Endpoints} from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
+import {Endpoints} from "api/apiConst";
+import { api } from "api/apiHelper";
 
 export const FETCH_TAGS = "FETCH_TGAS";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";

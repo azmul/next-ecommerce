@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {featureIconData} from "../../data/feature-icon";
-import FeatureIconSingle from "../../components/feature-icon/FeatureIconSingle";
+import {featureIconData} from "data/feature-icon";
+import FeatureIconSingle from "components/feature-icon/FeatureIconSingle";
 
 const FeatureIcon = ({ spaceTopClass, spaceBottomClass }) => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import { useRouter } from "next/router";
-import { fetchSearchProducts } from "../../../redux/actions/productActions";
+import { fetchSearchProducts } from "redux/actions/productActions";
 import { useDispatch } from "react-redux";
-import { SEARCH_STRING } from "../../../redux/actions/commonActions";
+import { SEARCH_STRING } from "redux/actions/commonActions";
 
 const MobileSearch = () => {
   const [form] = Form.useForm();

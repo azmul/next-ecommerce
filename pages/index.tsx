@@ -1,25 +1,25 @@
 import type { NextPage } from "next";
 import React, { useEffect, Fragment, useMemo } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "styles/Home.module.css";
 import { useDispatch } from "react-redux";
-import { getSetting } from "../redux/actions/settingActions";
+import { getSetting } from "redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
-import { fetchCategories, fetchTags } from "../redux/actions/commonActions";
+import { fetchCategories, fetchTags } from "redux/actions/commonActions";
 import { loadLanguages } from "redux-multilanguage";
-import HeroSlider from "../wrappers/hero-slider/HeroSlider";
-import FeatureIcon from "../wrappers/feature-icon/FeatureIcon";
-import TabProduct from "../wrappers/product/TabProduct";
-import TestimonialOne from "../wrappers/testimonial/TestimonialOne";
+import HeroSlider from "wrappers/hero-slider/HeroSlider";
+import FeatureIcon from "wrappers/feature-icon/FeatureIcon";
+import TabProduct from "wrappers/product/TabProduct";
+import TestimonialOne from "wrappers/testimonial/TestimonialOne";
 import { useSelector } from "react-redux";
-import { getSortedProducts } from "../helpers/product";
+import { getSortedProducts } from "helpers/product";
 import { Collapse, Button } from "antd";
-import RelatedProducts from "../wrappers/product/RelatedProducts";
+import RelatedProducts from "wrappers/product/RelatedProducts";
 import { useRouter } from "next/router";
-import { RootState } from "../redux/store";
+import { RootState } from "redux/store";
 import { NextSeo } from "next-seo";
 import useSWR from "swr";
-import { Endpoints } from "../api/apiConst";
-import { FETCH_HOME_PRODUCTS } from "../redux/actions/productActions";
+import { Endpoints } from "api/apiConst";
+import { FETCH_HOME_PRODUCTS } from "redux/actions/productActions";
 
 const { Panel } = Collapse;
 const CTAGORY = "category";
@@ -72,8 +72,8 @@ const Home: NextPage = () => {
     dispatch(
       loadLanguages({
         languages: {
-          en: require("../translations/english.json"),
-          bn: require("../translations/bangla.json"),
+          en: require("translations/english.json"),
+          bn: require("translations/bangla.json"),
         },
       })
     );

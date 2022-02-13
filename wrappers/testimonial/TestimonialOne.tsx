@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React, {useEffect} from "react";
 import Swiper from "react-id-swiper";
-import TestimonialOneSingle from "../../components/testimonial/TestimonialOneSingle";
-import { getTestimonials } from "../../redux/actions/testimonialActions";
+import TestimonialOneSingle from "components/testimonial/TestimonialOneSingle";
+import { getTestimonials } from "redux/actions/testimonialActions";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 
 const TestimonialOne = ({
   spaceTopClass,

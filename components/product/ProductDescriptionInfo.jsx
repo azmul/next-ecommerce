@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
-import { getProductCartQty } from "../../helpers/product";
-import { addToCart } from "../../redux/actions/cartActions";
-import { addToWishlist } from "../../redux/actions/wishlistActions";
-import { addToCompare } from "../../redux/actions/compareActions";
+import { getProductCartQty } from "helpers/product";
+import { addToCart } from "redux/actions/cartActions";
+import { addToWishlist } from "redux/actions/wishlistActions";
+import { addToCompare } from "redux/actions/compareActions";
 import {
   FacebookShareButton,
   PinterestShareButton,

@@ -5,9 +5,9 @@ import Nav from "react-bootstrap/Nav";
 import { Form, Input, Button, Checkbox, message } from "antd";
 import { UserOutlined, PhoneOutlined, LockOutlined } from "@ant-design/icons";
 import bdPhone from '@0devco/bd-phone-validator'
-import * as userApi from "../api/userApi";
+import * as userApi from "api/userApi";
 import { useDispatch } from 'react-redux'
-import {FETCH_USER, USER_TOKEN} from "../redux/actions/userActions";
+import {FETCH_USER, USER_TOKEN} from "redux/actions/userActions";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 

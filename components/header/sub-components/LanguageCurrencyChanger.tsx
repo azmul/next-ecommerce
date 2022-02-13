@@ -1,7 +1,7 @@
 import React from "react";
 import { changeLanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
-import {RootState} from "../../../redux/store";
+import {RootState} from "redux/store";
 
 type Iprops = { 
   currency: any;

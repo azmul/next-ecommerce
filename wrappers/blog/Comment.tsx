@@ -13,13 +13,13 @@ import {
 } from "antd";
 import { useSelector } from "react-redux";
 import Link  from "next/link";
-import { Endpoints } from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
+import { Endpoints } from "api/apiConst";
+import { api } from "api/apiHelper";
 import { numericCode } from "numeric-code";
 import moment from "moment";
 import { UserOutlined } from "@ant-design/icons";
 import { remove } from "lodash";
-import {RootState} from "../../redux/store";
+import {RootState} from "redux/store";
 
 const { TextArea } = Input;
 

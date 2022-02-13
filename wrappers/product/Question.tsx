@@ -17,9 +17,9 @@ import moment from "moment";
 import { capitalize, remove } from "lodash";
 import { UserOutlined } from "@ant-design/icons";
 import { numericCode } from "numeric-code";
-import { Endpoints } from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
-import { RootState } from "../../redux/store";
+import { Endpoints } from "api/apiConst";
+import { api } from "api/apiHelper";
+import { RootState } from "redux/store";
 
 const { TextArea } = Input;
 

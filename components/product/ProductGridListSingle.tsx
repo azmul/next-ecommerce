@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { useToasts } from "react-toast-notifications";
-import { getDiscountPrice } from "../../helpers/product";
+import { getDiscountPrice } from "helpers/product";
 import ProductModal from "./ProductModal";
 import { Rate } from "antd";
 import Image from "next/image";

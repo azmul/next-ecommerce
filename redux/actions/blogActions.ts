@@ -1,5 +1,5 @@
-import {Endpoints} from "../../api/apiConst";
-import { api } from "../../api/apiHelper";
+import {Endpoints} from "api/apiConst";
+import { api } from "api/apiHelper";
 
 export const FETCH_BLOGS = "FETCH_BLOGS";
 export const FETCH_BLOG = "FETCH_BLOG";

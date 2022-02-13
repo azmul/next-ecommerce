@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
-import { removeFromCart } from "../../redux/actions/cartActions";
+import { removeFromCart } from "redux/actions/cartActions";
 import { useSelector, useDispatch } from "react-redux";
-import { FETCH_USER, USER_TOKEN } from "../../redux/actions/userActions";
-import { SEARCH_STRING } from "../../redux/actions/commonActions";
+import { FETCH_USER, USER_TOKEN } from "redux/actions/userActions";
+import { SEARCH_STRING } from "redux/actions/commonActions";
 import { Form, Input, Button } from "antd";
 import { useRouter } from "next/router";
-import { RootState } from "../../redux/store";
+import { RootState } from "redux/store";
 
 type Iprops = {
   currency?: any;
