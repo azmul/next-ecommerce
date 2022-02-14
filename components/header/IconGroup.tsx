@@ -157,7 +157,7 @@ const IconGroup = ({
           {wishlistData && wishlistData.length ? wishlistData.length : 0}
         </span>
       </div>
-      <div className="same-style cart-wrap d-none d-lg-block">
+      <div className="same-style cart-wrap d-lg-block">
         <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
@@ -170,18 +170,6 @@ const IconGroup = ({
           currency={currency}
           removeFromCart={removeFromCart}
         />
-      </div>
-      <div className="same-style cart-wrap d-block d-lg-none">
-        <span className="icon-cart">
-          <Link passHref={true} href={"/cart"}>
-            <>
-              <i className="pe-7s-shopbag" />
-              <span className="count-style">
-                {cartData && cartData.length ? cartData.length : 0}
-              </span>
-            </>
-          </Link>
-        </span>
       </div>
       <div className="same-style mobile-off-canvas d-block d-lg-none">
         <button
