@@ -14,7 +14,7 @@ import Paginator from "react-hooks-paginator";
 
 const pageLimit = 8;
 
-const BlogPage: NextPage = ({ data, total, recentBlogs }: any) => {
+const BlogPage: NextPage = ({ data, total = 0, recentBlogs }: any) => {
   const SEO = {
     title: "Blog | Kureghorbd",
     openGraph: {
