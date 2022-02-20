@@ -7,14 +7,14 @@ import ProductList from "wrappers/product/Products";
 import ProductLoader from "components/loader/ProductLoader";
 import { NextSeo } from "next-seo";
 import { Endpoints } from "api/apiConst";
-import useSWR from "swr";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "redux/store";
 import { FETCH_FLASH_PRODUCTS } from "redux/actions/productActions";
+import { api } from "api/apiHelper";
 
-const pageLimit = 100;
+const pageLimit = 20;
 
-const Flash: NextPage = () => {
+const Flash: NextPage = ({ data }: any) => {
   const SEO = {
     title: "Flash | Kureghorbd",
     openGraph: {
@@ -37,8 +37,7 @@ const Flash: NextPage = () => {
     (state: RootState) => state.productData.flashProducts
   );
 
-  const {data} = useSWR(`${Endpoints.PRODUCTS}/flash`);
-  const products: any[] = useMemo(() => data ? data.data : reduxStoreProducts, [data, reduxStoreProducts]);
+  const products: any[] = useMemo(() => data ? data : reduxStoreProducts, [data, reduxStoreProducts]);
 
   dispatch({
     type: FETCH_FLASH_PRODUCTS,
@@ -70,10 +69,6 @@ const Flash: NextPage = () => {
       setSortedProducts(sortedProducts);
       setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
-
-  // useEffect(() => {
-  //   dispatch(fetchFlashProducts());
-  // }, [dispatch]);
 
   return (
     <Fragment>
@@ -121,5 +116,19 @@ const Flash: NextPage = () => {
     </Fragment>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const productsResponse = await api.get(`${Endpoints.PRODUCTS}/flash`);
+
+    return {
+      props: {
+        data: productsResponse.data.data,
+      },
+      revalidate: 10,
+    };
+  } finally {
+  }
+}
 
 export default Flash;

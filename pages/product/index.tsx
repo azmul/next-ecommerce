@@ -8,13 +8,15 @@ import ProductSidebar from "wrappers/product/ProductSidebar";
 import ProductTopbar from "wrappers/product/ProductTopbar";
 import ProductsList from "wrappers/product/Products";
 import { NextSeo } from "next-seo";
-import useSWR from "swr";
 import { Endpoints } from "api/apiConst";
 import { FETCH_COLLECTIONS_PRODUCTS } from "redux/actions/productActions";
 import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
+import { api } from "api/apiHelper";
 
-const Products: NextPage = () => {
+const pageLimit = 20;
+
+const Products: NextPage = ({data}: any) => {
   const SEO = {
     title: "Product | Kureghorbd",
     openGraph: {
@@ -35,9 +37,8 @@ const Products: NextPage = () => {
     (state: RootState) => state.productData.products
   );
 
-  const { data } = useSWR(`${Endpoints.PRODUCTS}/collection`);
   const products: any[] = useMemo(
-    () => (data ? data.data : reduxStoreProducts),
+    () => (data ? data : reduxStoreProducts),
     [data, reduxStoreProducts]
   );
 
@@ -45,8 +46,6 @@ const Products: NextPage = () => {
     type: FETCH_COLLECTIONS_PRODUCTS,
     payload: products,
   });
-
-  const pageLimit = 1000;
 
   const getLayout = (layout) => {
     setLayout(layout);
@@ -120,5 +119,19 @@ const Products: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const productsResponse = await api.get(`${Endpoints.PRODUCTS}/collection`);
+
+    return {
+      props: {
+        data: productsResponse.data.data,
+      },
+      revalidate: 10,
+    };
+  } finally {
+  }
+}
 
 export default Products;

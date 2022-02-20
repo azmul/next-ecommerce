@@ -7,7 +7,7 @@ import { api } from "api/apiHelper";
 import {Endpoints} from "api/apiConst";
 import { NextSeo } from "next-seo";
 
-const Blog = ({blog}) => {
+const Blog = ({blog, recentBlogs}) => {
   const SEO = {
     title: `Kureghor Ecommerce | ${blog.title}`,
     description: `Kureghor Ecommerce | ${blog.content}`,
@@ -33,7 +33,7 @@ const Blog = ({blog}) => {
               </div>
               <div className="col-lg-3">
                 {/* blog sidebar */}
-                <BlogSidebar />
+                <BlogSidebar blogs={recentBlogs} />
               </div>
             </div>
           </div>
@@ -60,9 +60,12 @@ export async function getStaticPaths() {
   export async function getStaticProps({params}) {
     try {
         const response = await api.get(`${Endpoints.BLOG}/${params.id}`);
+        const recentBlogs = await api.get(`${Endpoints.BLOG}/recent`);
+        
         return {
             props: {
-                blog: response.data
+                blog: response.data,
+                recentBlogs: recentBlogs.data.data,
             }, 
             revalidate: 10,
           }

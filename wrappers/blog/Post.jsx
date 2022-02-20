@@ -15,7 +15,7 @@ const Post = ({ blog }) => {
     <Fragment>
       <div className="blog-details-top">
         <div className="blog-details-img">
-          <Image priority priority width={500} height={450} layout="responsive" alt={blog && blog.title} src={blog && blog.picture_url} />
+          <Image priority width={500} height={450} layout="responsive" alt={blog && blog.title} src={blog && blog.picture_url} />
         </div>
         <div className="blog-details-content">
           <div className="blog-meta-2">

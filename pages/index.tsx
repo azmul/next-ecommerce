@@ -4,7 +4,6 @@ import styles from "styles/Home.module.css";
 import { useDispatch } from "react-redux";
 import { getSetting } from "redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
-import { fetchCategories, fetchTags } from "redux/actions/commonActions";
 import { loadLanguages } from "redux-multilanguage";
 import HeroSlider from "wrappers/hero-slider/HeroSlider";
 import FeatureIcon from "wrappers/feature-icon/FeatureIcon";
@@ -17,14 +16,15 @@ import RelatedProducts from "wrappers/product/RelatedProducts";
 import { useRouter } from "next/router";
 import { RootState } from "redux/store";
 import { NextSeo } from "next-seo";
-import useSWR from "swr";
 import { Endpoints } from "api/apiConst";
 import { FETCH_HOME_PRODUCTS } from "redux/actions/productActions";
+import { api } from "api/apiHelper";
+import { FETCH_CATEGORIES, FETCH_TAGS } from "redux/actions/commonActions";
 
 const { Panel } = Collapse;
 const CTAGORY = "category";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ sliders, productsData, testimonials, categories, tags }: any) => {
   const SEO = {
     title: "Home | Kureghorbd",
     openGraph: {
@@ -39,7 +39,6 @@ const Home: NextPage = () => {
   const reduxStoreProducts = useSelector(
     (state: RootState) => state.productData.homeProducts
   );
-  const { data: productsData } = useSWR(`${Endpoints.PRODUCTS}/home`);
   const products: any[] = useMemo(
     () => (productsData ? productsData.data : reduxStoreProducts),
     [productsData, reduxStoreProducts]
@@ -49,9 +48,15 @@ const Home: NextPage = () => {
     payload: products,
   });
 
-  const categories = useSelector(
-    (state: RootState) => state.commonData.categories
-  );
+  dispatch({
+    type: FETCH_CATEGORIES,
+    payload: categories
+  });
+
+  dispatch({
+    type: FETCH_TAGS,
+    payload: tags
+  });
 
   const productsGrid = [];
   categories.forEach((category) => {
@@ -78,8 +83,6 @@ const Home: NextPage = () => {
       })
     );
     dispatch(getSetting());
-    dispatch(fetchCategories());
-    dispatch(fetchTags());
   }, [dispatch]);
 
   /** Empty Cache when new version comes */
@@ -95,7 +98,7 @@ const Home: NextPage = () => {
 
       <Fragment>
         {/* hero slider */}
-        <HeroSlider />
+        <HeroSlider data={sliders} />
 
         {/* featured icon */}
         <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" />
@@ -126,10 +129,34 @@ const Home: NextPage = () => {
         <br />
         <br />
         {/* testimonial */}
-        <TestimonialOne />
+        <TestimonialOne data={testimonials} />
       </Fragment>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const slidersResponse = await api.get(Endpoints.SLIDERS);
+    const testimonialResponse = await api.get(Endpoints.TESTIMONIALS);
+    const categoriesResponse = await api.get(`${Endpoints.CATEGORY}/all`);
+    const productsResponse = await api.get(`${Endpoints.PRODUCTS}/home`);
+    const tagsResponse = await api.get(`${Endpoints.TAG}/all`);
+    const tags = tagsResponse.data.data.map((tag: any) => tag.name);
+    const categories = categoriesResponse.data.data.map((category: any) => category.name);
+
+    return {
+      props: {
+        sliders: slidersResponse.data.data,
+        productsData: productsResponse.data,
+        testimonials: testimonialResponse.data.data,
+        categories,
+        tags
+      },
+      revalidate: 10,
+    };
+  } finally {
+  }
+}
 
 export default Home;

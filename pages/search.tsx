@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "redux/store";
 import { FETCH_SEARCH_PRODUCTS } from "redux/actions/productActions";
 
-const pageLimit = 100;
+const pageLimit = 20;
 
 const SearchPage: NextPage = () => {
   const searchStr = useSelector((state: RootState) => state.commonData.search);

@@ -32,7 +32,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
             <Link href={"/product"}>
               <>
                 {" "}
-                CATEGORIES
+                Categories
                 {sidebarMenu ? (
                   <span>
                     <i className="fa fa-angle-right"></i>
@@ -51,7 +51,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
                       <li key={category}>
                         {category && (
                           <Link href={"/menu?item=" + category}>
-                            {category.toUpperCase()}
+                            {category}
                           </Link>
                         )}
                       </li>
@@ -76,24 +76,24 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
             </ul>
           </li>
           <li>
-            <Link href={"/product"}>PRODUCTS</Link>
+            <Link href={"/product"}>Products</Link>
           </li>
           {setting && setting.is_campaign_sell && (
             <li className="campaign-products">
               <CrownOutlined twoToneColor="#a749ff" />{" "}
-              <Link href={"/campaign"}>CAMPAIGN</Link>
+              <Link href={"/campaign"}>Campaign</Link>
             </li>
           )}
           {setting && setting.is_flash_sell && (
             <li className="flash-products">
-              <ThunderboltOutlined /> <Link href={"/flash"}>FLASH SELL</Link>
+              <ThunderboltOutlined /> <Link href={"/flash"}>Flash Sell</Link>
             </li>
           )}
           <li>
-            <Link href={"/blog"}>BLOG</Link>
+            <Link href={"/blog"}>Blog</Link>
           </li>
           <li>
-            <Link href={"/contact"}>CONTACT</Link>
+            <Link href={"/contact"}>Contact</Link>
           </li>
         </ul>
       </nav>
