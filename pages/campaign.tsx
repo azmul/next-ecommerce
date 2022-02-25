@@ -6,15 +6,15 @@ import ShopTopbarFilter from "wrappers/product/ShopTopbarFilter";
 import ProductList from "wrappers/product/Products";
 import ProductLoader from "components/loader/ProductLoader";
 import { NextSeo } from "next-seo";
+import useSWR from "swr";
 import { Endpoints } from "api/apiConst";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "redux/store";
 import { FETCH_CAMPAIGN_PRODUCTS } from "redux/actions/productActions";
-import { api } from "api/apiHelper";
 
 const pageLimit = 20;
 
-const Campaign: NextPage = ({data}: any) => {
+const Campaign: NextPage = () => {
   const SEO = {
     title: "Campaign | Kureghorbd",
     openGraph: {
@@ -37,7 +37,8 @@ const Campaign: NextPage = ({data}: any) => {
     (state: RootState) => state.productData.campaignProducts
   );
 
-  const products: any[] = useMemo(() => data ? data : reduxStoreProducts, [data, reduxStoreProducts]);
+  const {data} = useSWR(`${Endpoints.PRODUCTS}/campaign`);
+  const products: any[] = useMemo(() => data ? data.data : reduxStoreProducts, [data, reduxStoreProducts]);
 
   dispatch({
     type: FETCH_CAMPAIGN_PRODUCTS,
@@ -116,19 +117,5 @@ const Campaign: NextPage = ({data}: any) => {
     </Fragment>
   );
 };
-
-export async function getStaticProps() {
-  try {
-    const productsResponse = await api.get(`${Endpoints.PRODUCTS}/campaign`);
-
-    return {
-      props: {
-        data: productsResponse.data.data,
-      },
-      revalidate: 10,
-    };
-  } finally {
-  }
-}
 
 export default Campaign;
