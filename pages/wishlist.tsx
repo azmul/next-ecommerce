@@ -31,7 +31,7 @@ const Wishlist = ({
   const { addToast } = useToasts();
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="cart-main-area pt-90 pb-100">
         <div className="container">
@@ -228,7 +228,7 @@ const Wishlist = ({
           )}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

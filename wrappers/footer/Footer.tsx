@@ -45,6 +45,7 @@ const Footer = ({
 
   return (
     <footer
+      id="footerSection"
       className={`footer-area ${
         backgroundColorClass ? backgroundColorClass : ""
       } ${spaceTopClass ? spaceTopClass : ""} ${

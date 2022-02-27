@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React, { Fragment, useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import BlogSidebar from "wrappers/blog/BlogSidebar";
 import BlogPosts from "wrappers/blog/Posts";
 import BlogLoader from "components/loader/BlogLoader";
@@ -47,7 +47,7 @@ const BlogPage: NextPage = ({ data, total, recentBlogs }: any) => {
   }, [blogs, offset]);
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="blog-area pt-50 pb-100">
         <div className="container">
@@ -86,7 +86,7 @@ const BlogPage: NextPage = ({ data, total, recentBlogs }: any) => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

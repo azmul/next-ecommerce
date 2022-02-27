@@ -38,6 +38,7 @@ const HeaderOne = ({
 
   return (
     <header
+      id="headerSection"
       className={`header-area clearfix ${headerBgClass ? headerBgClass : ""}`}
     >
       <div

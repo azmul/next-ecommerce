@@ -38,10 +38,16 @@ const IconGroup = ({
   };
 
   const triggerMobileMenu = () => {
+    const page: any = document.querySelector("#page");
+    const header: any = document.querySelector("#headerSection");
+    const footer: any = document.querySelector("#footerSection");
     const offcanvasMobileMenu: any = document.querySelector(
       "#offcanvas-mobile-menu"
     );
     offcanvasMobileMenu.classList.add("active");
+    page.classList.add("background-modal");
+    header.classList.add("background-modal");
+    footer.classList.add("background-modal");
   };
 
   const handleLogout = () => {

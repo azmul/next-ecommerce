@@ -33,7 +33,7 @@ const Cart = ({
   let cartTotalPrice = 0;
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="cart-main-area pt-40 pb-50">
         <div className="container">
@@ -284,7 +284,7 @@ const Cart = ({
           )}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

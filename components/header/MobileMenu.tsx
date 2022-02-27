@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import MobileMenuSearch from "./sub-components/MobileSearch";
 import MobileNavMenu from "./sub-components/MobileNavMenu";
-import MobileLangCurChange from "./sub-components/MobileLangCurrChange";
 import MobileWidgets from "./sub-components/MobileWidgets";
 
 const MobileMenu = () => {
@@ -38,10 +37,16 @@ const MobileMenu = () => {
   };
 
   const closeMobileMenu = () => {
+    const page: any = document.querySelector("#page");
+    const header: any = document.querySelector("#headerSection");
+    const footer: any = document.querySelector("#footerSection");
     const offcanvasMobileMenu: any= document.querySelector(
       "#offcanvas-mobile-menu"
     );
     offcanvasMobileMenu.classList.remove("active");
+    page.classList.remove("background-modal");
+    header.classList.remove("background-modal");
+    footer.classList.remove("background-modal");
   };
 
   return (
@@ -60,9 +65,6 @@ const MobileMenu = () => {
 
           {/* mobile nav menu */}
           <MobileNavMenu />
-
-          {/* mobile language and currency */}
-          <MobileLangCurChange />
 
           {/* mobile widgets */}
           <MobileWidgets />

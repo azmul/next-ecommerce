@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import { Form, Input, Button, Checkbox, message } from "antd";
@@ -120,7 +120,7 @@ const LoginRegister: NextPage = () => {
   }
 
   return (
-    <Fragment>
+    <div id="page">
 <NextSeo {...SEO} />
         <div className="login-register-area pt-100 pb-100">
           <div className="container">
@@ -273,7 +273,7 @@ const LoginRegister: NextPage = () => {
             </div>
           </div>
         </div>
-    </Fragment>
+    </div>
   );
 };
 

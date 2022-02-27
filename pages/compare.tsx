@@ -26,7 +26,7 @@ const Compare = ({
   const { addToast } = useToasts();
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="compare-main-area pt-40 pb-50">
         <div className="container">
@@ -217,7 +217,7 @@ const Compare = ({
           )}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

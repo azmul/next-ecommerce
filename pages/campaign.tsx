@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React, { Fragment, useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Paginator from "react-hooks-paginator";
 import { getSortedProducts } from "helpers/product";
 import ShopTopbarFilter from "wrappers/product/ShopTopbarFilter";
@@ -72,7 +72,7 @@ const Campaign: NextPage = () => {
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">
@@ -114,7 +114,7 @@ const Campaign: NextPage = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

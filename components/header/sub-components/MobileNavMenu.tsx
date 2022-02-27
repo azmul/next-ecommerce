@@ -45,6 +45,7 @@ const MobileNavMenu = ({ strings }: Iprops) => {
 
       <ul>
         <li className="menu-item-has-children">
+          <Link href={"/product"}>PRODUCTS</Link>
           <ul className="sub-menu">
             {categories &&
               categories.length > 0 &&
@@ -58,9 +59,6 @@ const MobileNavMenu = ({ strings }: Iprops) => {
                 </li>
               ))}
           </ul>
-        </li>
-        <li>
-          <Link href={"/product"}>PRODUCTS</Link>
         </li>
         {setting && setting.is_campaign_sell && (
           <li className="campaign-products">

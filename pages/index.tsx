@@ -93,7 +93,7 @@ const Home: NextPage = ({ sliders, productsData, testimonials, categories, tags 
   }, [emptyCacheStorage, isLatestVersion]);
 
   return (
-    <div className={styles.container}>
+    <div id="page" className={styles.container}>
       <NextSeo {...SEO} />
 
       <Fragment>

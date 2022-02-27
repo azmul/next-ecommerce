@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React, { Fragment } from "react";
+import React from "react";
 import SectionTitleWithText from "components/section-title/SectionTitleWithText";
 import TextGridOne from "wrappers/text-grid/TextGridOne";
 import TeamMemberOne from "wrappers/team-member/TeamMemberOne";
@@ -19,7 +19,7 @@ const About: NextPage = () => {
   };
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       {/* section title with text */}
       <SectionTitleWithText spaceTopClass="pt-100" spaceBottomClass="pb-95" />
@@ -29,7 +29,7 @@ const About: NextPage = () => {
 
       {/* team member */}
       <TeamMemberOne spaceTopClass="pt-95" spaceBottomClass="pb-70" />
-    </Fragment>
+    </div>
   );
 };
 

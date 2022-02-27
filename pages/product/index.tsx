@@ -74,7 +74,7 @@ const Products: NextPage = ({data}: any) => {
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
   return (
-    <div className={styles.container}>
+    <div id="page" className={styles.container}>
       <NextSeo {...SEO} />
       <div className="shop-area pt-50 pb-100">
         <div className="container">

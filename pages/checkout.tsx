@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "helpers/product";
@@ -94,7 +94,7 @@ const Checkout = ({ location, cartItems, currency }) => {
   };
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
         <div className="checkout-area pt-40 pb-50">
           <div className="container">
@@ -338,7 +338,7 @@ const Checkout = ({ location, cartItems, currency }) => {
             )}
           </div>
         </div>
-    </Fragment>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import LocationMap from "components/contact/LocationMap";
 import { Form, Input, Button } from "antd";
 import * as contactApi from "api/contactApi";
@@ -64,7 +64,7 @@ const Contact: NextPage = () => {
   };
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
         <div className="contact-area pt-50 pb-100">
           <div className="container">
@@ -264,7 +264,7 @@ const Contact: NextPage = () => {
             </div>
           </div>
         </div>
-    </Fragment>
+    </div>
   );
 };
 

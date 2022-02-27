@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { Fragment, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import {
@@ -141,7 +141,7 @@ const MyAccount: NextPage = () => {
   }, [dispatch, prevUser, user]);
 
   return (
-    <Fragment>
+    <div id="page">
       <NextSeo {...SEO} />
       <div className="myaccount-area pb-80 pt-100">
         <div className="container">
@@ -618,7 +618,7 @@ const MyAccount: NextPage = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
