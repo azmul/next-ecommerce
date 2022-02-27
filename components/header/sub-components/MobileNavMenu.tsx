@@ -6,12 +6,16 @@ import { useDispatch } from "react-redux";
 import { FETCH_USER, USER_TOKEN } from "redux/actions/userActions";
 import { RootState } from "redux/store";
 import Image from "next/image";
+import { useRouter } from 'next/router'
+import { ThunderboltOutlined, CrownOutlined } from "@ant-design/icons";
 
 type Iprops = {
   strings: any;
 };
 
 const MobileNavMenu = ({ strings }: Iprops) => {
+  const router = useRouter();
+  const path = router.pathname;
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.userData.user);
   const setting = useSelector((state: RootState) => state.settingData.setting);
@@ -45,7 +49,7 @@ const MobileNavMenu = ({ strings }: Iprops) => {
 
       <ul>
         <li className="menu-item-has-children">
-          <Link href={"/product"}>PRODUCTS</Link>
+          <Link href={"/product"}>Categories</Link>
           <ul className="sub-menu">
             {categories &&
               categories.length > 0 &&
@@ -60,38 +64,42 @@ const MobileNavMenu = ({ strings }: Iprops) => {
               ))}
           </ul>
         </li>
-        {setting && setting.is_campaign_sell && (
-          <li className="campaign-products">
-            <Link href={"/campaign"}>CAMPAIGN</Link>
+        <li className={`${path === "/product" ? "active-menu" : ""}`}>
+            <Link href={"/product"}>Products</Link>
           </li>
-        )}
-        {setting && setting.is_flash_sell && (
-          <li className="flash-products">
-            <Link href={"/flash"}>FLASH SELL</Link>
+          {setting && setting.is_campaign_sell && (
+            <li className={`${path === "/campaign" ? "active-menu" : ""} campaign-products`}>
+              <CrownOutlined twoToneColor="#a749ff" />{" "}
+              <Link href={"/campaign"}>Campaign</Link>
+            </li>
+          )}
+          {setting && setting.is_flash_sell && (
+            <li className={`${path === "/flash" ? "active-menu" : ""} flash-products`} >
+              <ThunderboltOutlined /> <Link href={"/flash"}>Flash Sell</Link>
+            </li>
+          )}
+          <li className={`${path === "/blog" ? "active-menu" : ""}`}>
+            <Link href={"/blog"}>Blog</Link>
           </li>
-        )}
+          <li className={`${path === "/contact" ? "active-menu" : ""}`}>
+            <Link href={"/contact"}>Contact</Link>
+          </li>
         <li className="menu-item-has-children">
-          <Link href={"/blog"}>BLOG</Link>
-        </li>
-        <li>
-          <Link href={"/contact"}>CONTACT</Link>
-        </li>
-        <li className="menu-item-has-children">
-          <Link href={"/account"}>ACCOUNT</Link>
+          <Link href={"/account"}>Account</Link>
           <ul className="sub-menu">
             {!user && (
-              <li>
-                <Link href={"/login"}>LOGIN</Link>
+              <li className={`${path === "/login" ? "active-menu" : ""}`}>
+                <Link href={"/login"}>Login</Link>
               </li>
             )}
             {!user && (
-              <li>
-                <Link href={"/login"}>REGISTER</Link>
+              <li className={`${path === "/login" ? "active-menu" : ""}`}>
+                <Link href={"/login"}>Register</Link>
               </li>
             )}
             {user && (
-              <li>
-                <Link href={"/account"}>MY ACCOUNT</Link>
+              <li className={`${path === "/account" ? "active-menu" : ""}`}>
+                <Link href={"/account"}>My Account</Link>
               </li>
             )}
             {user && (

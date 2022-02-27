@@ -4,7 +4,7 @@ import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { ThunderboltOutlined, CrownOutlined } from "@ant-design/icons";
 import { RootState } from "redux/store";
-import Image from "next/image";
+import { useRouter } from 'next/router'
 
 type Iprops = {
   strings: any;
@@ -13,6 +13,8 @@ type Iprops = {
 };
 
 const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
+  const router = useRouter();
+  const path = router.pathname;
   const setting = useSelector((state: RootState) => state.settingData.setting);
   const categories = useSelector(
     (state: RootState) => state.commonData.categories
@@ -58,41 +60,26 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }: Iprops) => {
                     ))}
                 </ul>
               </li>
-              <li>
-                <ul>
-                  <li className="mega-menu-img">
-                    <Link passHref={true} href={"/product"}>
-                      <Image
-                        priority
-                        width={200}
-                        height={300}
-                        src={"/assets/img/nice-banner.png"}
-                        alt="BANNER"
-                      />
-                    </Link>
-                  </li>
-                </ul>
-              </li>
             </ul>
           </li>
-          <li>
+          <li className={`${path === "/product" ? "active-menu" : ""}`}>
             <Link href={"/product"}>Products</Link>
           </li>
           {setting && setting.is_campaign_sell && (
-            <li className="campaign-products">
+            <li className={`${path === "/campaign" ? "active-menu" : ""} campaign-products`}>
               <CrownOutlined twoToneColor="#a749ff" />{" "}
               <Link href={"/campaign"}>Campaign</Link>
             </li>
           )}
           {setting && setting.is_flash_sell && (
-            <li className="flash-products">
+            <li className={`${path === "/flash" ? "active-menu" : ""} flash-products`} >
               <ThunderboltOutlined /> <Link href={"/flash"}>Flash Sell</Link>
             </li>
           )}
-          <li>
+          <li className={`${path === "/blog" ? "active-menu" : ""}`}>
             <Link href={"/blog"}>Blog</Link>
           </li>
-          <li>
+          <li className={`${path === "/contact" ? "active-menu" : ""}`}>
             <Link href={"/contact"}>Contact</Link>
           </li>
         </ul>
