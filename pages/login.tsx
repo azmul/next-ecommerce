@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import {FETCH_USER, USER_TOKEN} from "redux/actions/userActions";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
+import { AuthHelper } from "api/authHelper";
 
 const LoginRegister: NextPage = () => {
   const SEO = {
@@ -38,6 +39,7 @@ const LoginRegister: NextPage = () => {
     setLoading(true);
     try {
       const response = await userApi.loginUser(values);
+      AuthHelper.saveTokens(response.token, "expireAt", "refreshToken");
       dispatch({
         type: FETCH_USER,
         payload: response.data

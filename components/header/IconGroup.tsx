@@ -9,6 +9,7 @@ import { SEARCH_STRING } from "redux/actions/commonActions";
 import { Form, Input, Button } from "antd";
 import { useRouter } from "next/router";
 import { RootState } from "redux/store";
+import { AuthHelper } from "api/authHelper";
 
 type Iprops = {
   currency?: any;
@@ -51,6 +52,7 @@ const IconGroup = ({
   };
 
   const handleLogout = () => {
+    AuthHelper.clearTokens();
     dispatch({
       type: FETCH_USER,
       payload: null,

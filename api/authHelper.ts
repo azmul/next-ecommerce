@@ -1,6 +1,6 @@
 import cookie from "react-cookies";
 
-const SESSION_TOKEN = "session-token";
+const SESSION_TOKEN = "sessionToken";
 
 export class AuthHelper {
   /**
