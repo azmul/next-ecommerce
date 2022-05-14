@@ -18,6 +18,7 @@ import Script from "next/script";
 import { GA_TRACKING_ID } from "lib/gtag";
 import { SWRConfig } from "swr";
 import { api } from "api/apiHelper";
+import Head from "next/head";
 require("isomorphic-fetch");
 
 NProgress.configure({
@@ -35,6 +36,36 @@ Router.events.on("routeChangeComplete", (url) => gtag.pageview(url));
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <>
+    <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <meta name="description" content="Kureghordb Ecommerce Purchase your desire products" />
+        <meta
+          name="keywords"
+          content="Ecommerce, Best Products, KuregoodBD"
+        />
+        <meta name="fb:app_id" content="537200641095699" property="fb:app_id" />
+        <meta name="article:publisher" content="https://www.facebook.com/bestproductlook" property="article:publisher" />
+        <meta name="fb:pages" content="111467658207287" property="fb:pages" />
+        <meta
+          name="google-site-verification"
+          content="HG-heMKGUe2L3ULC2lgMoaud_pmxS5aZ6W-0W1LDuJE"
+        />
+        <title>
+          Purchase your desire products
+        </title>
+
+        <link rel="manifest" href="/manifest.json" />
+        
+        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+        <meta name="theme-color" content="#551a8b" />
+      </Head>
     <ClearCacheProvider duration={5000}>
       <Script
         src="https://embed.tawk.to/61ed3eecb9e4e21181bb6ab1/1fq3brjn5"
@@ -70,6 +101,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </PersistGate>
       </Provider>
     </ClearCacheProvider>
+    </>
   );
 }
 
