@@ -76,11 +76,13 @@ function ProductModal(props) {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev"
     },
+    // eslint-disable-next-line react/display-name
     renderPrevButton: () => (
       <button className="swiper-button-prev ht-swiper-button-nav">
         <i className="pe-7s-angle-left" />
       </button>
     ),
+    // eslint-disable-next-line react/display-name
     renderNextButton: () => (
       <button className="swiper-button-next ht-swiper-button-nav">
         <i className="pe-7s-angle-right" />

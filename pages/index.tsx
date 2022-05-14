@@ -12,7 +12,7 @@ import TestimonialOne from "wrappers/testimonial/TestimonialOne";
 import { useSelector } from "react-redux";
 import { getSortedProducts } from "helpers/product";
 import { Collapse, Button } from "antd";
-import RelatedProducts from "wrappers/product/RelatedProducts";
+//import RelatedProducts from "wrappers/product/RelatedProducts";
 import { useRouter } from "next/router";
 import { RootState } from "redux/store";
 import { NextSeo } from "next-seo";
@@ -106,7 +106,7 @@ const Home: NextPage = ({ sliders, productsData, testimonials, categories, tags 
         {/* tab product */}
         <TabProduct spaceBottomClass="pb-60" />
 
-        {productsGrid.map((item, index) => (
+        {/* {productsGrid.map((item, index) => (
           <div key={Math.random()} className="container">
             <Collapse key={index}>
               <Panel
@@ -125,7 +125,7 @@ const Home: NextPage = ({ sliders, productsData, testimonials, categories, tags 
               </Panel>
             </Collapse>
           </div>
-        ))}
+        ))} */}
         <br />
         <br />
         {/* testimonial */}
