@@ -22,7 +22,8 @@ const BlogPosts = ({blogs}) => {
               <Image
                 src={blog.picture_url}
                 alt={blog.title}
-                layout="responsive"
+                loading="eager"
+                  layout="responsive"
                 width={200}
                 height={150}
               />
