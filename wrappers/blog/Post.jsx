@@ -85,7 +85,7 @@ const Post = ({ blog }) => {
               <li>
                 <FacebookShareButton
                   className="facebook"
-                  url={`${window.location.href}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog.url}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-facebook" />
@@ -94,7 +94,7 @@ const Post = ({ blog }) => {
               <li>
                 <TwitterShareButton
                   className="twitter"
-                  url={`${window.location.href}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog.url}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-twitter" />
@@ -103,7 +103,7 @@ const Post = ({ blog }) => {
               <li>
                 <PinterestShareButton
                   className="instagram"
-                  url={`${window.location.href}/blog/${blog && blog._id}`}
+                  url={`${window.location.href}/blog/${blog && blog.url}`}
                   quote={blog && blog.title}
                 >
                   <i className="fa fa-instagram" />

@@ -12,7 +12,7 @@ const BlogSidebar = ({blogs}) => {
         {blogs && blogs.length > 0 && blogs.map(blog=>(
           <div className="single-sidebar-blog" key={blog._id}>
             <div className="sidebar-blog-img">
-              <Link passHref href={`/blog/${blog._id}`}>
+              <Link passHref href={`/blog/${blog.url}`}>
                   <Image
                   src={
                     blog.picture_url
@@ -29,7 +29,7 @@ const BlogSidebar = ({blogs}) => {
             <div className="sidebar-blog-content">
               <span>{blog.category}</span>
               <h4>
-                <Link passHref href={`/blog/${blog._id}`}>
+                <Link passHref href={`/blog/${blog.url}`}>
                   <Typography.Paragraph ellipsis={{ rows: 1 }} >
                     {blog.title}
                   </Typography.Paragraph>

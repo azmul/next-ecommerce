@@ -76,7 +76,7 @@ const Wishlist = ({
                                       passHref
                                       href={
                                         "/product/" +
-                                        wishlistItem.id
+                                        wishlistItem.url
                                       }
                                     >
                                       <Image
@@ -96,7 +96,7 @@ const Wishlist = ({
                                 <Link
                                   href={
                                     "/product/" +
-                                    wishlistItem.id
+                                    wishlistItem.url
                                   }
                                 >
                                   {wishlistItem.name}
@@ -136,7 +136,7 @@ const Wishlist = ({
                                 ) : wishlistItem.variation &&
                                   wishlistItem.variation.length >= 1 ? (
                                   <Link
-                                    href={`/product/${wishlistItem.id}`}
+                                    href={`/product/${wishlistItem.url}`}
                                   >
                                     Select option
                                   </Link>

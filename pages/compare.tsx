@@ -59,7 +59,7 @@ const Compare = ({
                                   compareItem.image[0] && (
                                     <Link
                                       passHref
-                                      href={"/product/" + compareItem.id}
+                                      href={"/product/" + compareItem.url}
                                     >
                                       <Image
                                         className="img-fluid"
@@ -72,7 +72,7 @@ const Compare = ({
                                     </Link>
                                   )}
                                 <div className="product-title">
-                                  <Link href={"/product/" + compareItem.id}>
+                                  <Link href={"/product/" + compareItem.url}>
                                     {compareItem.name}
                                   </Link>
                                 </div>
@@ -89,7 +89,7 @@ const Compare = ({
                                   ) : compareItem.variation &&
                                     compareItem.variation.length >= 1 ? (
                                     <Link
-                                      href={`/product/${compareItem.id}`}
+                                      href={`/product/${compareItem.url}`}
                                     >
                                       Select Option
                                     </Link>

@@ -40,7 +40,7 @@ const ProductGridSingle = ({
         >
           <div className="product-img">
             {product && product.image && product.image.length > 0 && (
-              <Link passHref href={`/product/${product._id}`}>
+              <Link passHref href={`/product/${product.url}`}>
                 <Image
                   className="default-img"
                   src={product && product.image[0]}
@@ -50,17 +50,6 @@ const ProductGridSingle = ({
                   alt={product.name}
                   priority
                 />
-                {/* {product.image.length > 1 && (
-                    <Link passHref href={`/product/${product._id}`}>
-                      <Image
-                        className="hover-img"
-                        src={product && product.image[1]}
-                        width={280} height={220} 
-                        layout="responsive"
-                        alt={product.name}
-                      />
-                    </Link>
-                  )} */}
               </Link>
             )}
 
@@ -103,7 +92,7 @@ const ProductGridSingle = ({
                     Buy now{" "}
                   </a>
                 ) : product.variation && product.variation.length >= 1 ? (
-                  <Link href={`/product/${product._id}`}>Select Option</Link>
+                  <Link href={`/product/${product.url}`}>Select Option</Link>
                 ) : product.stock && product.stock > 0 ? (
                   <button
                     onClick={() => addToCart(product, addToast)}
@@ -138,7 +127,7 @@ const ProductGridSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link href={"/product/" + product._id}>{product.name}</Link>
+              <Link href={"/product/" + product.url}>{product.name}</Link>
             </h3>
             {product.rating && product.rating > 0 ? (
               <div className="product-rating">

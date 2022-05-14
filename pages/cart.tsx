@@ -80,7 +80,7 @@ const Cart = ({
                                   cartItem.image[0] && (
                                     <Link
                                       passHref
-                                      href={"/product/" + cartItem.id}
+                                      href={"/product/" + cartItem.url}
                                     >
                                       <Image
                                         className="img-fluid"
@@ -98,7 +98,7 @@ const Cart = ({
                                 <Link
                                   href={
                                     "/product/" +
-                                    cartItem.id
+                                    cartItem.url
                                   }
                                 >
                                   {cartItem.name}

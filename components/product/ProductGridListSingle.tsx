@@ -43,7 +43,7 @@ const ProductGridListSingle = ({
           >
             <div className="product-img">
               {product && product.image && product.image[0] && (
-                <Link passHref href={`/product/${product._id}`}>
+                <Link passHref href={`/product/${product.url}`}>
                   <Image
                     className="default-img"
                     src={product && product.image[0]}
@@ -54,18 +54,6 @@ const ProductGridListSingle = ({
                   />
                 </Link>
               )}
-{/* 
-              {product.image.length > 1 && (
-                <Link passHref href={`/product/${product._id}`}>
-                  <Image
-                    className="hover-img"
-                    src={product && product.image[1]}
-                    width={280} height={220} 
-                    layout="responsive"
-                    alt={product.name}
-                  />
-                </Link>
-              )} */}
 
               {product.discount || product.new ? (
                 <div className="product-img-badges">
@@ -107,7 +95,7 @@ const ProductGridListSingle = ({
                     </a>
                   ) : product.variation && product.variation.length >= 1 ? (
                     <Link
-                      href={`/product/${product._id}`}
+                      href={`/product/${product.url}`}
                     >
                       Select Option
                     </Link>
@@ -145,7 +133,7 @@ const ProductGridListSingle = ({
             </div>
             <div className="product-content text-center">
               <h3>
-                <Link href={"/product/" + product._id}>{product.name}</Link>
+                <Link href={"/product/" + product.url}>{product.name}</Link>
               </h3>
               {product.rating && product.rating > 0 ? (
                 <div className="product-rating">
@@ -176,7 +164,7 @@ const ProductGridListSingle = ({
                 <div className="product-list-image-wrap">
                   <div className="product-img">
                     {product && product.image && product.image[0] && (
-                      <Link passHref href={"/product/" + product._id}>
+                      <Link passHref href={"/product/" + product.url}>
                         <Image
                           className="default-img img-fluid"
                           src={product && product.image[0]}
@@ -187,17 +175,6 @@ const ProductGridListSingle = ({
                         />
                       </Link>
                     )}
-                    {/* {product.image.length > 1 && (
-                      <Link passHref href={"/product/" + product._id}>
-                        <Image
-                          className="hover-img img-fluid"
-                          src={product && product.image[1]}
-                          width={280} height={220} 
-                          layout="responsive"
-                          alt={product.name}
-                        />
-                      </Link>
-                    )} */}
 
                     {product.discount || product.new ? (
                       <div className="product-img-badges">
@@ -217,7 +194,7 @@ const ProductGridListSingle = ({
               <div className="col-xl-8 col-md-7 col-sm-6">
                 <div className="shop-list-content">
                   <h3>
-                    <Link href={"/product/" + product._id}>{product.name}</Link>
+                    <Link href={"/product/" + product.url}>{product.name}</Link>
                   </h3>
                   <div className="product-list-price">
                     {discountedPrice !== null ? (
@@ -263,7 +240,7 @@ const ProductGridListSingle = ({
                         </a>
                       ) : product.variation && product.variation.length >= 1 ? (
                         <Link
-                          href={`/product/${product._id}`}
+                          href={`/product/${product.url}`}
                         >
                           Select Option
                         </Link>

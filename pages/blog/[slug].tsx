@@ -49,17 +49,17 @@ export async function getStaticPaths() {
         const paths = blogs.map((blog) => {
             return {
                 params: {
-                    id: blog._id,
+                    slug: `${blog.url}`,
                 }, 
               }
         })
-        return {paths, fallback: true}
+        return {paths, fallback: 'blocking'}
     } finally {}
   }
 
   export async function getStaticProps({params}) {
     try {
-        const response = await api.get(`${Endpoints.BLOG}/${params.id}`);
+        const response = await api.get(`${Endpoints.BLOG}/details/${params.slug}`);
         const recentBlogs = await api.get(`${Endpoints.BLOG}/recent`);
         
         return {
